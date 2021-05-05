@@ -1,5 +1,7 @@
 package Pageobjects.frontend;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,10 +10,10 @@ import Resources.BaseSetup;
 
 
 
-public class SignUpLoginPage extends BaseSetup
+public class SignUp extends BaseSetup
 {
 	
-	public SignUpLoginPage()
+	public SignUp()
 	{
 		PageFactory.initElements(driver,this);
 	}
@@ -51,6 +53,9 @@ public class SignUpLoginPage extends BaseSetup
 	
 	@FindBy(xpath="//button[@type='submit']")
 	public static WebElement SignUpOTPButton;
+	
+	@FindBy(xpath="//div[@class='otp-input']/input")
+	public static List<WebElement> OTPFields;
 	
 	
 }
