@@ -2,7 +2,6 @@ package steps.frontend;
 
 
 import Pageobjects.frontend.SignUpLoginPage;
-
 import Resources.BaseSetup;
 import io.cucumber.java.en.Given;
 
