@@ -57,5 +57,8 @@ public class SignUp extends BaseSetup
 	@FindBy(xpath="//div[@class='otp-input']/input")
 	public static List<WebElement> OTPFields;
 	
+	@FindBy(xpath="//div[@class='back-arrow']/a")
+	public static WebElement BackCursorButton;
+	
 	
 }
