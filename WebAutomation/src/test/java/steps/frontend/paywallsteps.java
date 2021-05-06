@@ -32,6 +32,7 @@ public class paywallsteps extends BaseSetup {
 	
 	 @Given("^Search (.+) click on watchlist button$")
 	    public void search_click_on_watchlist_button(String shoseries) throws Throwable {
+		   homepage.CookieClose.click();
 		   homepage.HomePageSearch.sendKeys(shoseries);
 		   log.info("Sent Text in the Home Page is "+shoseries);
 	       homepage.autosuggestivenamesm(shoseries); 
@@ -75,6 +76,7 @@ public class paywallsteps extends BaseSetup {
 	    }
 	 @Given("^Search (.+) click on watch free button$")
 	    public void search_click_buy_or_watch_free_button(String shoseries) throws Throwable {
+		   homepage.CookieClose.click();
 		   homepage.HomePageSearch.sendKeys(shoseries);
 		   log.info("Sent Text in the Home Page is "+shoseries);
 	       homepage.autosuggestivenamesm(shoseries); 
@@ -86,7 +88,7 @@ public class paywallsteps extends BaseSetup {
 	       log.info("Step Passed");
 	    }
 
-	    @Then("^Page should redirect to the login page$")
+	 @Then("^Page should redirect to the login page$")
 	    public void page_should_redirect_to_the_login_page() throws Throwable {
 	    	wait.until(ExpectedConditions.visibilityOf(ToastandErrormessages.ToastMessageText));
 	    	log.info(ToastandErrormessages.ToastMessageText.getText());
@@ -95,7 +97,7 @@ public class paywallsteps extends BaseSetup {
 		    ToastandErrormessages.ToastMessageClose.click();
 		    log.info("Step Passed");
 	    }
-	    @And("^Again click back and click on watch free button from header$")
+     @And("^Again click back and click on watch free button from header$")
 	    public void again_click_back_and_click_buy_or_watch_free_button_from_header() throws Throwable {
 	    	SignUp.BackCursorButton.click();
 	    	commonlocatorsandmethods.scrolldownm();
@@ -107,8 +109,9 @@ public class paywallsteps extends BaseSetup {
 		    ToastandErrormessages.ToastMessageClose.click();
 		    log.info("Step Passed");
 	    }
-	    @Given("^Search (.+) and click on buy button$")
+	 @Given("^Search (.+) and click on buy button$")
 	    public void search_and_click_on_buy_button(String shoseries) throws Throwable {
+		       homepage.CookieClose.click();
 	    	   homepage.HomePageSearch.sendKeys(shoseries);
 			   log.info("Sent Text in the Home Page is "+shoseries);
 		       homepage.autosuggestivenamesm(shoseries); 
@@ -120,7 +123,7 @@ public class paywallsteps extends BaseSetup {
 		       log.info("Step Passed");
 	    }
 
-	    @And("^Again Click buy button from headder and check same$")
+	 @And("^Again Click buy button from headder and check same$")
 	    public void again_click_buy_button_from_headder_and_check_same() throws Throwable {
 	    	SignUp.BackCursorButton.click();
 	    	commonlocatorsandmethods.scrolldownm();
@@ -132,9 +135,10 @@ public class paywallsteps extends BaseSetup {
 		    ToastandErrormessages.ToastMessageClose.click();
 		    log.info("Step Passed");
 	    }
-	    @Given("^Search (.+) and click on first episode$")
+	 @Given("^Search (.+) and click on first episode$")
 	    public void search_and_click_on_first_episode(String shoseries) throws Throwable {
-	    	   homepage.HomePageSearch.sendKeys(shoseries);
+		       homepage.CookieClose.click();
+		       homepage.HomePageSearch.sendKeys(shoseries);
 			   log.info("Sent Text in the Home Page is "+shoseries);
 		       homepage.autosuggestivenamesm(shoseries); 
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
@@ -146,7 +150,7 @@ public class paywallsteps extends BaseSetup {
 		       log.info("Clicked on Episode card");
 	    }
 
-	    @Then("^Click on any episode it should redirect to login page$")
+	 @Then("^Click on any episode it should redirect to login page$")
 	    public void click_on_any_episode_it_should_redirect_to_login_page() throws Throwable {
 	    	   Thread.sleep(500);
 	    	   Actions a =new Actions(driver);
@@ -159,7 +163,7 @@ public class paywallsteps extends BaseSetup {
 			   log.info("Step Passed");
 	    }
 
-	    @And("^Click back and now select (.+) from season dropdown$")
+	  @And("^Click back and now select (.+) from season dropdown$")
 	    public void click_back_and_now_select_from_season_dropdown(String seasonname) throws Throwable {
 	    	SignUp.BackCursorButton.click();
 	    	log.info("Clicked on Back Button");
@@ -179,7 +183,8 @@ public class paywallsteps extends BaseSetup {
 	    }
 	    
 	    @Given("^Search (.+) and click on any promo$")
-	    public void search_and_click_on_any_promo(String shoseries) throws Throwable {
+	      public void search_and_click_on_any_promo(String shoseries) throws Throwable {
+	    	   homepage.CookieClose.click();
 	    	   homepage.HomePageSearch.sendKeys(shoseries);
 			   log.info("Sent Text in the Home Page is "+shoseries);
 		       homepage.autosuggestivenamesm(shoseries); 

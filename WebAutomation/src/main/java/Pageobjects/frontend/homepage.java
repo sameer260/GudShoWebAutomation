@@ -26,8 +26,11 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='ng-scroll-content']/ul/li/span")
 	public static List<WebElement> AutoSuggestiveDropdown;
 	
+	@FindBy(xpath="//span[@class='cursor']")
+	public static WebElement CookieClose;
 	
-	
+	@FindBy(xpath="button is-default blue-stroke small mat-button mat-button-base")
+	public static WebElement CookieGotItButton;
 	
 	
 	public static void autosuggestivenamesm(String shoseriesorstudioname) throws InterruptedException {
