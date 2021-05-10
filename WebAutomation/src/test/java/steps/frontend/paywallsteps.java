@@ -15,6 +15,7 @@ import Pageobjects.frontend.ToastandErrormessages;
 import Pageobjects.frontend.commonlocatorsandmethods;
 import Pageobjects.frontend.homepage;
 import Pageobjects.frontend.shodetailpage;
+import Pageobjects.frontend.videoplayer;
 import Resources.BaseSetup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -27,6 +28,7 @@ public class paywallsteps extends BaseSetup {
 	  SignUp sign=new SignUp();
 	  shodetailpage shodetail= new shodetailpage();	
 	  homepage home=new homepage();
+	  videoplayer video=new videoplayer();
 	  ToastandErrormessages toaster=new ToastandErrormessages();
 	  WebDriverWait wait=new WebDriverWait(driver,20);
 	
@@ -191,22 +193,32 @@ public class paywallsteps extends BaseSetup {
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 		       log.info("Page Redirected to the  "+shoseries + " detail page");
-		       String promoname=shodetailpage.PromoNamesText.get(0).getText();
 		       Actions a=new Actions(driver);
 		       a.moveToElement(shodetailpage.PromoCards.get(0)).click().build().perform();
 		       log.info("Clicked on Promo Card");
-		       wait.until(ExpectedConditions.titleContains(promoname));
-		       System.out.println("pending");
+		       wait.until(ExpectedConditions.visibilityOf(videoplayer.PlayerGudShoLogo));
+		       log.info("Step Passed");
 	    }
 
 	    @Then("^verify the promo is playing and give gud on promo$")
 	    public void verify_the_promo_is_playing_and_give_gud_on_promo() throws Throwable {
-	    	System.out.println("pending");
+	    	   Actions a=new Actions(driver);
+	    	   a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
+	    	   log.info("Hover on Player");
+	    	   videoplayer.PlayerGudICon.click();
+	    	   log.info("Clicked on Gud Icon");
+	    	   log.info("Step Passed");
 	    }
 
 	    @And("^verify signin popup opened and verify the text$")
 	    public void verify_signin_popup_opened_and_verify_the_text() throws Throwable {
-	    	System.out.println("pending");
+	    	   assertTrue(videoplayer.SignInPopup.isDisplayed());
+	    	   log.info(videoplayer.SignUpHeadText.getText());
+	    	   assertEquals(videoplayer.SignUpHeadText.getText(),"Like this Promo?");
+	    	   log.info(videoplayer.SignUpDescriptionText.getText());
+	    	   assertEquals(videoplayer.SignUpHeadText.getText(),"Sign in now to rate this promo 'Gud'");
+	    	   videoplayer.PopUpSignInButton.click();
+	    	   log.info("Clicked on SignIn Button");
 	    }
 	
 	
