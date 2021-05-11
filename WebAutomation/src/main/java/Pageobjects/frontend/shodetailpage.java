@@ -42,7 +42,7 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[2]/div[1]/div[2]/div[2]/ul[1]/app-gud-play-button[1]/ul[1]/li[1]/button[1]")
 	public static WebElement HeaderWatchFreeButton;
 	
-	@FindBy(xpath="//div[@class='share-play']")
+	@FindBy(xpath="//li[@class='ng-star-inserted']/div")
 	public static WebElement BuyButton;
 	
 	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[2]/div[1]/div[2]/div[2]/ul[1]/app-gud-play-button[1]/ul[1]/li[2]/div[1]/div[1]")
@@ -74,6 +74,24 @@ public class shodetailpage extends BaseSetup
 	
 	@FindBy(xpath="//div[@class='mat-ripple card-img']")
 	public static List<WebElement> PromoCards;
+	
+	@FindBy(xpath="//span[text()=' Full Episodes ']")
+	public static WebElement FullEpisodesLink;
+	
+	@FindBy(xpath="//h2[@class='see-category episodes-sho-title']")
+	public static WebElement AllEpisodesText;
+	
+	@FindBy(xpath="//h2[@class='text-control']/span")
+	public static List<WebElement> EpisodeNamesInEpisodePage;
+	
+	@FindBy(xpath="//mat-form-field[@appearance='outline']")
+	public static WebElement SeasonDropdownInEpisodePage;
+	
+	@FindBy(xpath="//div[@class='swiper-slide ng-star-inserted']")
+	public static List<WebElement> AudioSongsRowsList;
+	
+	@FindBy(xpath="//h4[@class='card-title text-control']/span")
+	public static List<WebElement> SongsNamesText;
 	
 	
 }

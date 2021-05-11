@@ -41,7 +41,8 @@ public class homepage extends BaseSetup {
 			String str = AutoSuggestiveDropdown.get(i).getText();
 			log.info("The Auto suggestive dropdown shows:"+str);
 			if (str.equalsIgnoreCase(shoseriesorstudioname)) {
-				a.moveToElement(AutoSuggestiveDropdown.get(i)).click().build().perform();
+				//a.moveToElement(AutoSuggestiveDropdown.get(i)).click().build().perform();
+				AutoSuggestiveDropdown.get(i).click();
 				break;
 			}
 		}

@@ -43,14 +43,51 @@ Examples:
 |shoseries|season name|
 |Talent   |Season 3   |
 
+
+Scenario Outline: Search any sho and Click on Episode
+Given Search <shoseries> and Click on episode link
+Then Page should redirect to the login page
+And select any <season name> from the season dropdown and on episode
+Then Page should redirect to the login page
+
+Examples:
+|shoseries|season name|
+|Talent   |Season 3   |
+
 Scenario Outline: Play a promo from Sho detail page and like
 Given Search <shoseries> and click on any promo
 Then verify the promo is playing and give gud on promo
 And verify signin popup opened and verify the text
+Then click on signin button and it should redirect to the login page
+And try same above scenario from player full screen
 
-@Execute
+
 Examples:
 |shoseries|
 |Talent   |
+
+Scenario Outline: Search any Sho and Play audio do fav
+Given Search <shoseries> and play any song
+When Add to fav the song and verify the signin popup
+Then click on signin button and it should redirect to the login page
+
+Examples:
+|shoseries|
+|Talent   |
+
+                                   ##########  Studio Detail Page ###########
+                                   
+Scenario Outline: Search any Sho and Play audio do fav
+Given Search any <studio> and follow the studio
+When Signin popup should display and verify the text
+Then click on signin button and it should redirect to the login page
+And Come back do same follow from header
+Then click on signin button and it should redirect to the login page 
+
+@Execute
+Examples:
+|studio |
+|Sameer |                                   
+
 
 

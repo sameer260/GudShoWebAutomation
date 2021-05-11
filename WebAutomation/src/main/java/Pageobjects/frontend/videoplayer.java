@@ -36,5 +36,8 @@ public class videoplayer extends BaseSetup{
 	
 	@FindBy(xpath="//div[@class='content-wrapper']/button[2]")
 	public static WebElement PopUpSignInButton;
+	
+	@FindBy(xpath="//div[@class='center_right']/button")
+	public static WebElement FullScreenButton;
 
 }
