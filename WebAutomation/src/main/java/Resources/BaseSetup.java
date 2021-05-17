@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -40,10 +41,10 @@ public class BaseSetup
     	System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\BrowserDrivers\\geckodriver.exe");
     	driver=new FirefoxDriver();
     }
-    else if(browsername=="internetexplorer")
+    else if(browsername.contains("internetexplorer"))
     {
-    	System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\chromedriver\\chromedriver.exe");
-    	driver=new InternetExplorerDriver();
+    	System.setProperty("webdriver.edge.driver",System.getProperty("user.dir")+"\\BrowserDrivers\\msedgedriver.exe");
+    	driver=new EdgeDriver();
     }
      driver.manage().window().maximize();
      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

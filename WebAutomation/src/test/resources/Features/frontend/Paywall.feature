@@ -33,7 +33,7 @@ Examples:
 |Talent   |
 
 
-Scenario Outline: Search any sho and select season and episode
+Scenario Outline: Search any sho and select season and episode click on episode card
 Given Search <shoseries> and click on first episode
 Then Page should redirect to the login page
 And Click back and now select <season name> from season dropdown
@@ -45,7 +45,7 @@ Examples:
 |Talent   |Season 3   |
 
 
-Scenario Outline: Search any sho and Click on Episode
+Scenario Outline: Search any sho and Click on Episode from Full episode page
 Given Search <shoseries> and Click on episode link
 Then Page should redirect to the login page
 And select any <season name> from the season dropdown and on episode
@@ -78,7 +78,7 @@ Examples:
 
                                    ##########  Studio Detail Page ###########
                                    
-Scenario Outline: Search any <studio> and click on follow
+Scenario Outline: Search any studio and click on follow
 Given Search any <studio> and follow the studio
 When Signin popup should display and verify the text
 Then click on signin button and it should redirect to the login page
@@ -90,7 +90,7 @@ Examples:
 |studio |
 |Sameer |                                   
 
-Scenario Outline: Search any <studio> and click on watch list
+Scenario Outline: Search any studio and click on watch list from sho card
 Given Search any <studio> and add to watchlist from any sho card
 When Signin popup should open and verify the text
 Then click on signin button and it should redirect to the login page
@@ -100,7 +100,7 @@ Examples:
 |Sameer | 
 
 
-Scenario Outline: Search any <studio> and Click on Fav icon
+Scenario Outline: Search any studio and Click on Fav icon from any audio card
 Given Search any <studio> and add to audio fav
 When Add to fav the song and verify the signin popup
 Then click on signin button and it should redirect to the login page
