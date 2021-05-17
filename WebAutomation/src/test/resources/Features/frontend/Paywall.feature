@@ -39,6 +39,7 @@ Then Page should redirect to the login page
 And Click back and now select <season name> from season dropdown
 Then Click on any episode it should redirect to login page
 
+
 Examples:
 |shoseries|season name|
 |Talent   |Season 3   |
@@ -61,7 +62,7 @@ And verify signin popup opened and verify the text
 Then click on signin button and it should redirect to the login page
 And try same above scenario from player full screen
 
-
+@Execute
 Examples:
 |shoseries|
 |Talent   |
@@ -77,17 +78,37 @@ Examples:
 
                                    ##########  Studio Detail Page ###########
                                    
-Scenario Outline: Search any Sho and Play audio do fav
+Scenario Outline: Search any <studio> and click on follow
 Given Search any <studio> and follow the studio
 When Signin popup should display and verify the text
 Then click on signin button and it should redirect to the login page
 And Come back do same follow from header
 Then click on signin button and it should redirect to the login page 
 
-@Execute
+
 Examples:
 |studio |
 |Sameer |                                   
+
+Scenario Outline: Search any <studio> and click on watch list
+Given Search any <studio> and add to watchlist from any sho card
+When Signin popup should open and verify the text
+Then click on signin button and it should redirect to the login page
+
+Examples:
+|studio |
+|Sameer | 
+
+
+Scenario Outline: Search any <studio> and Click on Fav icon
+Given Search any <studio> and add to audio fav
+When Add to fav the song and verify the signin popup
+Then click on signin button and it should redirect to the login page
+
+
+Examples:
+|studio |
+|Sameer | 
 
 
 

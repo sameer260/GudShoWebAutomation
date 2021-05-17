@@ -37,7 +37,7 @@ public class BaseSetup
     }
     else if(browsername.contains("Firefox"))
     {
-    	System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\chromedriver\\geckodriver.exe");
+    	System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\BrowserDrivers\\geckodriver.exe");
     	driver=new FirefoxDriver();
     }
     else if(browsername=="internetexplorer")

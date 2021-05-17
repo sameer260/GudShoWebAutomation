@@ -1,6 +1,7 @@
 package Pageobjects.frontend;
 
-import java.util.List;
+
+
 
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,6 +10,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import Resources.BaseSetup;
 
 public class commonlocatorsandmethods extends BaseSetup {
+	
+	
 	
 	
 	

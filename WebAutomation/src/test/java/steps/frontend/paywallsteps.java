@@ -1,12 +1,12 @@
 package steps.frontend;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,10 +39,7 @@ public class paywallsteps extends BaseSetup {
 	
 	 @Given("^Search (.+) click on watchlist button$")
 	    public void search_click_on_watchlist_button(String shoseries) throws Throwable {
-		   homepage.CookieClose.click();
-		   homepage.HomePageSearch.sendKeys(shoseries);
-		   log.info("Sent Text in the Home Page is "+shoseries);
-	       homepage.autosuggestivenamesm(shoseries); 
+		   homepage.HomePageSearch(shoseries);
 	       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 	       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 	       log.info("Page Redirected to the  "+shoseries +" detail page");
@@ -83,10 +80,7 @@ public class paywallsteps extends BaseSetup {
 	    }
 	 @Given("^Search (.+) click on watch free button$")
 	    public void search_click_buy_or_watch_free_button(String shoseries) throws Throwable {
-		   homepage.CookieClose.click();
-		   homepage.HomePageSearch.sendKeys(shoseries);
-		   log.info("Sent Text in the Home Page is "+shoseries);
-	       homepage.autosuggestivenamesm(shoseries); 
+	       homepage.HomePageSearch(shoseries); 
 	       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 	       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 	       log.info("Page Redirected to the  "+shoseries +" detail page");
@@ -118,10 +112,7 @@ public class paywallsteps extends BaseSetup {
 	    }
 	 @Given("^Search (.+) and click on buy button$")
 	    public void search_and_click_on_buy_button(String shoseries) throws Throwable {
-		       homepage.CookieClose.click();
-	    	   homepage.HomePageSearch.sendKeys(shoseries);
-			   log.info("Sent Text in the Home Page is "+shoseries);
-		       homepage.autosuggestivenamesm(shoseries); 
+		       homepage.HomePageSearch(shoseries); 
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 		       log.info("Page Redirected to the  "+shoseries +" detail page");
@@ -144,14 +135,11 @@ public class paywallsteps extends BaseSetup {
 	    }
 	 @Given("^Search (.+) and click on first episode$")
 	    public void search_and_click_on_first_episode(String shoseries) throws Throwable {
-		       homepage.CookieClose.click();
-		       homepage.HomePageSearch.sendKeys(shoseries);
-			   log.info("Sent Text in the Home Page is "+shoseries);
-		       homepage.autosuggestivenamesm(shoseries); 
+		       homepage.HomePageSearch(shoseries); 
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 		       log.info("Page Redirected to the  "+shoseries + " detail page");
-		       Thread.sleep(500);
+		       ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", shodetailpage.MusicalTracksTitle);
 		       Actions a =new Actions(driver);
 		       a.moveToElement(shodetailpage.EpisodeCards.get(0)).click().build().perform();
 		       log.info("Clicked on Episode card");
@@ -191,10 +179,7 @@ public class paywallsteps extends BaseSetup {
 	    
 	    @Given("^Search (.+) and click on any promo$")
 	      public void search_and_click_on_any_promo(String shoseries) throws Throwable {
-	    	   homepage.CookieClose.click();
-	    	   homepage.HomePageSearch.sendKeys(shoseries);
-			   log.info("Sent Text in the Home Page is "+shoseries);
-		       homepage.autosuggestivenamesm(shoseries); 
+		       homepage.HomePageSearch(shoseries); 
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 		       log.info("Page Redirected to the  "+shoseries + " detail page");
@@ -207,7 +192,7 @@ public class paywallsteps extends BaseSetup {
 	    @Then("^verify the promo is playing and give gud on promo$")
 	    public void verify_the_promo_is_playing_and_give_gud_on_promo() throws Throwable {
 	    	   wait.until(ExpectedConditions.visibilityOf(videoplayer.PlayerGudShoLogo));
-	    	   Thread.sleep(1000);
+	    	   Thread.sleep(2000);
 	    	   Actions a=new Actions(driver);
 	    	   a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
 	    	   log.info("Hover on Player");
@@ -226,10 +211,7 @@ public class paywallsteps extends BaseSetup {
 	    }
 	    @Given("^Search (.+) and Click on episode link$")
 	    public void search_and_click_on_episode_link(String shoseries) throws Throwable {
-	    	   homepage.CookieClose.click();
-			   homepage.HomePageSearch.sendKeys(shoseries);
-			   log.info("Sent Text in the Home Page is "+shoseries);
-		       homepage.autosuggestivenamesm(shoseries); 
+		       homepage.HomePageSearch(shoseries); 
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 		       log.info("Page Redirected to the  "+shoseries +" detail page");
@@ -256,10 +238,7 @@ public class paywallsteps extends BaseSetup {
 	    }
 	    @Given("^Search (.+) and play any song$")
 	    public void search_and_play_any_song(String shoseries) throws Throwable {
-	    	   homepage.CookieClose.click();
-			   homepage.HomePageSearch.sendKeys(shoseries);
-			   log.info("Sent Text in the Home Page is "+shoseries);
-		       homepage.autosuggestivenamesm(shoseries); 
+		       homepage.HomePageSearch(shoseries); 
 		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
 		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
 		       log.info("Page Redirected to the  "+shoseries +" detail page");
@@ -283,9 +262,8 @@ public class paywallsteps extends BaseSetup {
 	    public void try_same_above_scenario_from_player_full_screen() throws Throwable {
 	    	   SignUp.BackCursorButton.click();
 	    	   wait.until(ExpectedConditions.visibilityOf(videoplayer.PlayerGudShoLogo));
-	    	   Thread.sleep(1000);
+	    	   Thread.sleep(2000);
 	    	   Actions a=new Actions(driver);
-	    	   a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
 	    	   a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
 	    	   log.info("Hover on Player");
 	    	   videoplayer.FullScreenButton.click();
@@ -304,10 +282,7 @@ public class paywallsteps extends BaseSetup {
 	    }
 	    @Given("^Search any (.+) and follow the studio$")
 	    public void search_any_and_follow_the_studio(String studio) throws Throwable {
-	    	   homepage.CookieClose.click();
-			   homepage.HomePageSearch.sendKeys(studio);
-			   log.info("Sent Text in the Home Page is "+studio);
-		       homepage.autosuggestivenamesm(studio); 
+		       homepage.HomePageSearch(studio); 
 		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
 		       assertEquals(studio, studiodetailpage.StudioNameInStudioPage.getText());
 		       log.info("Page Redirected to the  "+studio +" detail page");
@@ -335,6 +310,27 @@ public class paywallsteps extends BaseSetup {
 	            studiodetailpage.HeaderFollowButton.click();
 	            log.info("Clicked on follow button");
 	    }
+	    @Given("^Search any (.+) and add to watchlist from any sho card$")
+	    public void search_any_and_add_to_watchlist_from_any_sho_card(String studio) throws Throwable {
+	    	   homepage.HomePageSearch(studio); 
+		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+		       assertEquals(studio, studiodetailpage.StudioNameInStudioPage.getText());
+		       log.info("Page Redirected to the  "+studio +" detail page");
+		       Actions a=new Actions(driver);
+		       a.moveToElement(studiodetailpage.ShoCards.get(0)).build().perform();
+		       studiodetailpage.WatchListIcon.get(0).click(); 
+	    }
+	    @Given("^Search any (.+) and add to audio fav$")
+	    public void search_any_and_add_to_audio_fav(String studio) throws Throwable {
+	    	   homepage.HomePageSearch(studio); 
+		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+		       assertEquals(studio, studiodetailpage.StudioNameInStudioPage.getText());
+		       log.info("Page Redirected to the  "+studio +" detail page");
+		       commonlocatorsandmethods.scrolldownm();
+		       Actions a=new Actions(driver);
+		       a.moveToElement(studiodetailpage.AudioCards.get(0)).click().build().perform(); 
+	    }
+	    
 	   
 	
 	

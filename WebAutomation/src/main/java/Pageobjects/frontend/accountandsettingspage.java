@@ -1,5 +1,6 @@
 package Pageobjects.frontend;
 
-public class accountandsettingspage {
+public class accountandsettingspage 
+{
 
 }
