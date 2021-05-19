@@ -92,5 +92,10 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//h4[@class='card-title text-control']/span")
 	public static List<WebElement> SongsNamesText;
 	
+	@FindBy(xpath="/html[1]/body[1]/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[3]/div[3]/div[1]/p[1]")
+	public static WebElement FeelersText;
+	
+	
+	
 	
 }

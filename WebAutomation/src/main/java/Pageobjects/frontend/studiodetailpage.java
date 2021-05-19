@@ -3,6 +3,7 @@ package Pageobjects.frontend;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -39,7 +40,28 @@ public class studiodetailpage extends BaseSetup {
 	@FindBy(xpath="//div[@class='card-main audio-card-content']/div[1]")
 	public static List<WebElement> AudioCards;
 	
-	   
+	@FindBy(xpath="//div[@class='swiper-slide ng-star-inserted swiper-slide-active']/div/div/div/h3/span[1]")
+	public static WebElement ShoNamesOnStudioBanner;
+	
+	@FindBy(xpath="//div[@class='slider-content banner-slider-content ng-star-inserted']/swiper/div/div[1]")
+	public static WebElement NextSliderButton;
+	
+	@FindBy(xpath="//div[@class='swiper-slide ng-star-inserted swiper-slide-active']/div/div/div/button")
+	public static WebElement PlayTrailerButton;
+	
+	
+	public static void BannerImageClick(String shoname) throws InterruptedException
+	{
+		 Actions a =new Actions(driver);
+		 while(!(studiodetailpage.ShoNamesOnStudioBanner.getText().equalsIgnoreCase(shoname)))
+		  {
+			  a.moveToElement(studiodetailpage.NextSliderButton).click().build().perform();  
+		  }
+		 Thread.sleep(1000);
+		 
+		
+		 
+	}
 	
 
 }

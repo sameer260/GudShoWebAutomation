@@ -39,5 +39,11 @@ public class videoplayer extends BaseSetup{
 	
 	@FindBy(xpath="//div[@class='center_right']/button")
 	public static WebElement FullScreenButton;
+	
+	@FindBy(xpath="//div[@id='inner-video']/button")
+	public static WebElement CloseButton;
+	
+	@FindBy(xpath="/html[1]/body[1]/app-root[1]/div[1]/app-watch[1]/app-player[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[2]/h2[1]")
+	public static WebElement ShoNameOnPlayer;
 
 }

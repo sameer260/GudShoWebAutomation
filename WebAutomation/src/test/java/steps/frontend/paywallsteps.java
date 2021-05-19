@@ -36,7 +36,59 @@ public class paywallsteps extends BaseSetup {
 	  audioplayer audio=new audioplayer();
 	  studiodetailpage studio=new studiodetailpage();
 	  WebDriverWait wait=new WebDriverWait(driver,20);
-	
+	  
+	  
+	  @Given("^SignIn button is avialable$")
+	    public void signin_button_is_avialable() throws Throwable {
+	        assertTrue(homepage.HomePageSignInButton.isDisplayed());
+	        assertTrue(homepage.HomePageSignInButton.isEnabled());
+	        log.info("Sign In Button is Visible");
+	    }
+
+	    @And("^Coins section is avilable$")
+	    public void coins_section_is_avilable() throws Throwable {
+	        assertTrue(homepage.CoinsButton.isDisplayed());
+	        log.info("CoinsButton is Visible");
+	    }
+
+	    @And("^Banners is showing on home page$")
+	    public void banners_is_showing_on_home_page() throws Throwable {
+	        assertTrue(homepage.HomePageBanners.isDisplayed());
+	        log.info("Home Page Banners is visible");
+	    }
+
+	    @And("^Icons below the banners is showing$")
+	    public void icons_below_the_banners_is_showing() throws Throwable {
+	        assertTrue(homepage.WelcomeContent.isDisplayed());
+	        log.info("Welcome Content is Visible");
+	    }
+	    @And("^Page Title is showing \"([^\"]*)\"$")
+	    public void page_title_is_showing_something(String strArg1) throws Throwable {
+	        assertEquals(driver.getTitle(), strArg1);
+	        log.info("Title is visible");
+	    }
+
+	    @And("^Footer Section is visible$")
+	    public void footer_section_is_visible() throws Throwable {
+	    	assertTrue(homepage.FooterSection.isDisplayed());
+	        log.info("FooterSection is Visible");
+	    }
+
+	    @And("^Header Logo is visible$")
+	    public void header_logo_is_visible() throws Throwable {
+	    	assertTrue(homepage.HeadderLogo.isDisplayed());
+	        log.info("HeadderLogo is Visible");
+	    }
+	    @Given("^Click on (.+) and verify its redicted to sho detail page$")
+	    public void click_on_and_verify_its_redicted_to_sho_detail_page(int bannernum) throws Throwable {
+	    	homepage.HomePageBannerSliderButtons.get(bannernum).click();
+	    	String shonameon=homepage.ShoNamesOnBannerText.get(bannernum).getText();
+	    	log.info(shonameon);
+	    	homepage.ShoNamesOnBannerText.get(bannernum).click();
+	    	String ShonameonShodetailpage=shodetailpage.ShoNameonShoDetailPage.getText();
+	    	log.info(ShonameonShodetailpage);
+	    	assertEquals(shonameon,ShonameonShodetailpage);
+	    }
 	 @Given("^Search (.+) click on watchlist button$")
 	    public void search_click_on_watchlist_button(String shoseries) throws Throwable {
 		   homepage.HomePageSearch(shoseries);
@@ -280,6 +332,27 @@ public class paywallsteps extends BaseSetup {
 	  		   assertTrue(SignUp.HelloThereText.isDisplayed());
 	  		   log.info("Step Passed");	   
 	    }
+	    @Given("^Search any (.+) and click on feelers text$")
+	    public void search_any_and_click_on_feelers_text(String shoseries) throws Throwable {
+	    	   homepage.HomePageSearch(shoseries);
+		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
+		       log.info("Page Redirected to the  "+shoseries +" detail page");
+		       shodetailpage.FeelersText.click();
+		       log.info("Clicked on Feelers text");
+	    }
+
+	    @When("^verify the signin popup and text in signIn up$")
+	    public void verify_the_signin_popup_and_text_in_signin_up() throws Throwable {
+	    	   wait.until(ExpectedConditions.visibilityOf(shodetailpage.SignInPopUp));
+		       assertTrue(shodetailpage.SignInPopUp.isDisplayed());
+		       log.info("Signin popup is displayed");
+		       assertEquals(shodetailpage.SignInPopUpHeadderText.getText(),"Want to see Feelers?");
+		       log.info(shodetailpage.SignInPopUpHeadderText.getText());
+		       assertEquals(shodetailpage.SignInPopUpDescriptionText.getText(),"Sign in to see the feelers reacted by your friends");
+		       log.info(shodetailpage.SignInPopUpDescriptionText.getText());
+		       log.info("Step Passed");
+	    }
 	    @Given("^Search any (.+) and follow the studio$")
 	    public void search_any_and_follow_the_studio(String studio) throws Throwable {
 		       homepage.HomePageSearch(studio); 
@@ -329,6 +402,61 @@ public class paywallsteps extends BaseSetup {
 		       commonlocatorsandmethods.scrolldownm();
 		       Actions a=new Actions(driver);
 		       a.moveToElement(studiodetailpage.AudioCards.get(0)).click().build().perform(); 
+	    }
+	    @Given("^Search any (.+) from click on banner having (.+)$")
+	    public void search_any_from_click_on_banner_having(String studio, String shoname) throws Throwable {
+	    	   Actions a=new Actions(driver);
+	    	   homepage.HomePageSearch(studio); 
+		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+		       assertEquals(studio, studiodetailpage.StudioNameInStudioPage.getText());
+		       log.info("Page Redirected to the  "+studio +" detail page");
+		       studiodetailpage.BannerImageClick(shoname);
+		       studiodetailpage.ShoNamesOnStudioBanner.click();
+		       log.info("Clicked on shoname in studio banner");    
+	    }
+	    @Then("^it should redirect to the sho detail page and verify (.+)$")
+	    public void it_should_redirect_to_the_sho_detail_page_and_verify(String shoname) throws Throwable {
+	    	   wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+		       assertEquals(shoname, shodetailpage.ShoNameonShoDetailPage.getText());
+		       log.info("Page Redirected to the  "+shoname +" detail page");
+			   log.info("Step Passed");
+	    }
+
+	    @Given("^search any (.+) and play trailer from banner for (.+)$")
+	    public void search_any_and_play_trailer_from_banner_for(String studio, String shoname) throws Throwable {
+	    	   homepage.HomePageSearch(studio); 
+		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+		       assertEquals(studio, studiodetailpage.StudioNameInStudioPage.getText());
+		       log.info("Page Redirected to the  "+studio +" detail page");
+		       studiodetailpage.BannerImageClick(shoname);
+		       studiodetailpage.PlayTrailerButton.click();
+		       log.info("Clicked on Playtrailer in studio banner");
+	    }
+
+	    @Then("^trailer will play and close the player$")
+	    public void trailer_will_play_and_close_the_player() throws Throwable {
+	    	   wait.until(ExpectedConditions.visibilityOf(videoplayer.PlayerGudShoLogo));
+	    	   Thread.sleep(2000);
+	    	   Actions a=new Actions(driver);
+	    	   a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
+	    	   log.info("Hover on Player");
+	    	   String str=videoplayer.ShoNameOnPlayer.getText();
+	    	   videoplayer.CloseButton.click();
+	    	   log.info("videoplayer closed");
+	    	   wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+		       assertEquals(str, shodetailpage.ShoNameonShoDetailPage.getText());
+		       log.info("Page Redirected to the  "+str +" detail page");
+			   log.info("Step Passed");
+	    }
+	    @Then("^it will redirect to the (.+)detail page and will show toaster message$")
+	    public void it_will_redirect_to_the_detail_page_and_will_show_toaster_message(String shoname) throws Throwable {
+	    	   wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+		       assertEquals(shoname, shodetailpage.ShoNameonShoDetailPage.getText());
+		       log.info("Page Redirected to the  "+shoname +" detail page");
+		       String toastmessage=ToastandErrormessages.ToastMessageText.getText();
+		       log.info(toastmessage);
+		       assertEquals("Currently no Trailer available", toastmessage);
+			   log.info("Step Passed");
 	    }
 	    
 	   

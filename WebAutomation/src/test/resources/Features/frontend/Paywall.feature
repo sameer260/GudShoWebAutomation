@@ -1,5 +1,27 @@
 Feature: Paywall Functionality
 
+
+                              #######   Home Page      ###########
+
+ Scenario: Open the WebSite and Check SignIn button is available
+ Given SignIn button is avialable
+ And Coins section is avilable
+ And Page Title is showing "GudSho - Watch Unlimited Movies & Web Series Online"
+ And Banners is showing on home page
+ And Icons below the banners is showing
+ And Footer Section is visible
+ And Header Logo is visible
+ 
+ 
+ Scenario Outline: Click on HomePage Slider and verify its redirected to correct sho page
+ Given Click on <bannernum> and verify its redicted to sho detail page
+ 
+ 
+ Examples:
+ |bannernum|
+ |0        |
+ 
+                               
                                 #######  Sho Detail Page ###########
 
 Scenario Outline: Search Any sho and add to watchlist
@@ -62,7 +84,7 @@ And verify signin popup opened and verify the text
 Then click on signin button and it should redirect to the login page
 And try same above scenario from player full screen
 
-@Execute
+
 Examples:
 |shoseries|
 |Talent   |
@@ -75,6 +97,18 @@ Then click on signin button and it should redirect to the login page
 Examples:
 |shoseries|
 |Talent   |
+
+Scenario Outline: Search any shoseries and click on feelers text
+Given Search any <shoseries> and click on feelers text 
+When verify the signin popup and text in signIn up
+Then click on signin button and it should redirect to the login page
+
+
+Examples:
+|shoseries |
+|Talent    | 
+
+
 
                                    ##########  Studio Detail Page ###########
                                    
@@ -105,10 +139,35 @@ Given Search any <studio> and add to audio fav
 When Add to fav the song and verify the signin popup
 Then click on signin button and it should redirect to the login page
 
-
 Examples:
 |studio |
 |Sameer | 
+
+Scenario Outline: Search any studio and from studio banner click on nay banner
+Given Search any <studio> from click on banner having <shoname>
+Then it should redirect to the sho detail page and verify <shoname>
+
+Examples:
+|studio|shoname|
+|Sameer|Test  |
+
+Scenario Outline: Play Trailer from studio banner
+Given search any <studio> and play trailer from banner for <shoname>
+Then trailer will play and close the player
+
+Examples:
+|studio|shoname|
+|Sameer|Test   |
+
+
+Scenario Outline: Play Trailer from studio banner if there is no trailer
+Given search any <studio> and play trailer from banner for <shoname>
+Then it will redirect to the <shoname>detail page and will show toaster message
+
+Examples:
+|studio|shoname               |
+|Sameer|New Notification Check|
+
 
 
 
