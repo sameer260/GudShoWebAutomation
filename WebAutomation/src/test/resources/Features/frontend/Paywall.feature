@@ -65,6 +65,7 @@ Then Click on any episode it should redirect to login page
 Examples:
 |shoseries|season name|
 |Talent   |Season 3   |
+|Gudsho Series|Season 2|
 
 
 Scenario Outline: Search any sho and Click on Episode from Full episode page
@@ -73,9 +74,11 @@ Then Page should redirect to the login page
 And select any <season name> from the season dropdown and on episode
 Then Page should redirect to the login page
 
+
 Examples:
 |shoseries|season name|
 |Talent   |Season 3   |
+|Gudsho Series|Season 2|
 
 Scenario Outline: Play a promo from Sho detail page and like
 Given Search <shoseries> and click on any promo
