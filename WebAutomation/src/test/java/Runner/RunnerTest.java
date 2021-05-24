@@ -4,6 +4,7 @@ package Runner;
 
 import java.io.File;
 
+
 import io.cucumber.junit.CucumberOptions;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,15 @@ import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.sorting.SortingMethod;
 
 
+
+
+
+
 	
 	@RunWith(Cucumber.class)
-	@CucumberOptions(features= "src/test/resources/Features/frontend/Paywall.feature",
+	@CucumberOptions(features= "src/test/resources/Features/frontend/SmokeTest.feature",
 	glue={"steps"},
-	tags="@Execute",
+	tags="@test",		
 	plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 			  "pretty","json:target/cucumber-reports/Cucumber.json", 
 			  "junit:target/cucumber-reports/Cucumber.xml",
@@ -32,7 +37,6 @@ import net.masterthought.cucumber.sorting.SortingMethod;
 		
 	public class RunnerTest 
 	{	
-		
 		@BeforeClass
 		public static void logger() {
 			  PropertyConfigurator.configure(System.getProperty("user.dir")+"/src/main/java/Resources/log4j.properties");
@@ -42,7 +46,7 @@ import net.masterthought.cucumber.sorting.SortingMethod;
 		@AfterClass
 		public static void JVMreports() {
 			File reportOutputDirectory = new File("target/JVM");
-			List<String> jsonFiles = new ArrayList<>();
+			List<String> jsonFiles = new ArrayList<String>();
 			jsonFiles.add("target/cucumber-reports/Cucumber.json");
 			String buildNumber = "1";
 			String project = "gudsho";

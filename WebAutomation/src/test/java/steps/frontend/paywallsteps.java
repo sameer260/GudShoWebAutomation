@@ -56,12 +56,6 @@ public class paywallsteps extends BaseSetup {
 	        assertTrue(homepage.HomePageBanners.isDisplayed());
 	        log.info("Home Page Banners is visible");
 	    }
-
-	    @And("^Icons below the banners is showing$")
-	    public void icons_below_the_banners_is_showing() throws Throwable {
-	        assertTrue(homepage.WelcomeContent.isDisplayed());
-	        log.info("Welcome Content is Visible");
-	    }
 	    @And("^Page Title is showing \"([^\"]*)\"$")
 	    public void page_title_is_showing_something(String strArg1) throws Throwable {
 	        assertEquals(driver.getTitle(), strArg1);
@@ -76,7 +70,7 @@ public class paywallsteps extends BaseSetup {
 
 	    @And("^Header Logo is visible$")
 	    public void header_logo_is_visible() throws Throwable {
-	    	assertTrue(homepage.HeadderLogo.isDisplayed());
+	    	assertTrue(homepage.HeaderLogo.isDisplayed());
 	        log.info("HeadderLogo is Visible");
 	    }
 	    @Given("^Click on (.+) and verify its redicted to sho detail page$")
@@ -193,7 +187,7 @@ public class paywallsteps extends BaseSetup {
 		       log.info("Page Redirected to the  "+shoseries + " detail page");
 		       ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", shodetailpage.MusicalTracksTitle);
 		       Actions a =new Actions(driver);
-		       a.moveToElement(shodetailpage.EpisodeCards.get(0)).click().build().perform();
+		       shodetailpage.EpisodeCards.get(0).click();
 		       log.info("Clicked on Episode card");
 	    }
 
@@ -399,7 +393,7 @@ public class paywallsteps extends BaseSetup {
 		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
 		       assertEquals(studio, studiodetailpage.StudioNameInStudioPage.getText());
 		       log.info("Page Redirected to the  "+studio +" detail page");
-		       commonlocatorsandmethods.scrolldownm();
+		       //commonlocatorsandmethods.scrolldownm();
 		       Actions a=new Actions(driver);
 		       a.moveToElement(studiodetailpage.AudioCards.get(0)).click().build().perform(); 
 	    }
@@ -458,6 +452,34 @@ public class paywallsteps extends BaseSetup {
 		       assertEquals("Currently no Trailer available", toastmessage);
 			   log.info("Step Passed");
 	    }
+	    @Given("^Search (.+) and click on Request Release button$")
+	    public void search_and_click_on_request_release_button(String shoseries) throws Throwable {
+	    	   homepage.HomePageSearch(shoseries); 
+		       wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+		       assertEquals(shoseries, shodetailpage.ShoNameonShoDetailPage.getText());
+		       log.info("Page Redirected to the  "+shoseries +" detail page");
+		       shodetailpage.WatchFreeButton.click();
+		       log.info("Clicked on Request Release button");
+		       log.info("Step Passed");
+	    }
+
+	    @Then("^Page should redirect to the login page and will ask to login again$")
+	    public void page_should_redirect_to_the_login_page_and_will_ask_to_login_again() throws Throwable {
+	    	wait.until(ExpectedConditions.visibilityOf(SignUp.HelloThereText));
+		    assertTrue(SignUp.HelloThereText.isDisplayed());
+		    log.info("Step Passed");
+	    }
+
+	    @And("^Do same from headder and it should have same beahviour as above$")
+	    public void do_same_from_headder_and_it_should_have_same_beahviour_as_above() throws Throwable {
+	    	SignUp.BackCursorButton.click();
+	    	commonlocatorsandmethods.scrolldownm();
+	    	shodetailpage.HeaderWatchFreeButton.click();
+	    	wait.until(ExpectedConditions.visibilityOf(SignUp.HelloThereText));
+	    	assertTrue(SignUp.HelloThereText.isDisplayed());
+		    log.info("Step Passed");
+	    }
+
 	    
 	   
 	

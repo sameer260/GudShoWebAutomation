@@ -6,6 +6,8 @@ import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import Pageobjects.frontend.SignUp;
+import Pageobjects.frontend.ToastandErrormessages;
 import Pageobjects.frontend.homepage;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -32,6 +34,15 @@ public class Hooks extends BaseSetup {
 	{
 		
 		System.out.println("This Before Hook for not applicable to Paywall concept and Signup and Login");
+		SignUp sl=new SignUp();
+		ToastandErrormessages ts=new ToastandErrormessages();
+		SignUp.HomePageSignInButton.click();
+		SignUp.PhoneEmailIdField.sendKeys("9542840307");
+		SignUp.PasswordField.sendKeys("sameer6789");
+		SignUp.LoginPageSignInButton.click();
+		ToastandErrormessages.ToastMessageClose.click();
+		
+		
 	}
 	@After()
 	public void teardown(Scenario scenario)

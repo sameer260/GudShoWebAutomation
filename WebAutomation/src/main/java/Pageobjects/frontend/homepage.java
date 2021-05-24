@@ -30,19 +30,20 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//h3[@class='ng-star-inserted']")
 	public static List<WebElement> ShoNamesOnBannerText;
 	 
-	@FindBy(xpath="//div[@class='welcome-content-inner']")
-	public static WebElement WelcomeContent;
-	 
 	@FindBy(xpath="//div[@class='gs-coins-btn']/button")
 	public static WebElement CoinsButton;
 	
 	@FindBy(xpath="//div[@class='user-navigation']/button")
     public static WebElement HomePageSignInButton;
 	
-	@FindBy(xpath="//input[@placeholder='Search for Movies, Web Series, Studios, etc.']")
+	@FindBy(id="headerSearch")
+	public static WebElement SearchICon;
+	
+	
+	@FindBy(xpath="//input[@placeholder='Search']")
 	public static WebElement HomePageSearch;
 	
-	@FindBy(xpath="//div[@class='ng-scroll-content']/ul/li/span")
+	@FindBy(xpath="//div[@class='ng-scroll-content']/ul/li/span/span")
 	public static List<WebElement> AutoSuggestiveDropdown;
 	
 	@FindBy(xpath="//span[@class='cursor']")
@@ -54,13 +55,19 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='footer']")
 	public static WebElement FooterSection;
 	
-	@FindBy(xpath="//div[@class='header-logo']")
-	public static WebElement HeadderLogo;
+	@FindBy(xpath="//div[@class='slider-header flex justify-content-between']/h4")
+	public static List<WebElement> RowsTitleText;
 	
+	@FindBy(xpath="//div[@class='header-logo flex align-items-center']/a[1]")
+	public static WebElement HeaderLogo;
 	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal']/app-gud-card/div")
+	public static List<WebElement> WatchlistCards;
 	
 	public static void HomePageSearch(String shoseriesorstudioname) throws InterruptedException {
+		
 		homepage.CookieClose.click();
+		homepage.SearchICon.click();
 		homepage.HomePageSearch.sendKeys(shoseriesorstudioname);
 		log.info("Sent Text in the Home Page is "+shoseriesorstudioname);
 		Thread.sleep(2500);
@@ -75,21 +82,7 @@ public class homepage extends BaseSetup {
 			}
 		}
 	}
-	/*
-	 * public static void SliderBannerClick(String shoname) throws
-	 * InterruptedException {
-	 * 
-	 * 
-	 * for(int i=0;i<homepage.HomePageBannerSliderButtons.size();i++) {
-	 * homepage.HomePageBannerSliderButtons.get(i).click(); String
-	 * name=homepage.ShoNamesOnBannerText.get(i).getText();
-	 * if(name.equalsIgnoreCase(shoname)) {
-	 * homepage.ShoNamesOnBannerText.get(i).click(); break; }
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
+
 
 
 		

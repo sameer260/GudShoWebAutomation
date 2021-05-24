@@ -17,6 +17,9 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//div[@class='bookmark static sho-detail flex align-items-center justify-content-center cursor relative-signUp add-to-list ng-star-inserted']")
     public static WebElement WatchListButton;
 	
+	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[3]/div[2]/ul[1]/li[2]/div[1]")
+	public static WebElement ShareButton;
+	
 	@FindBy(xpath="//body[@id='body']/app-root/div/app-sho-details/main/section/div/div[3]/h1")
 	public static WebElement ShoNameonShoDetailPage;
 	
@@ -41,7 +44,7 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[2]/div[1]/div[2]/div[2]/ul[1]/app-gud-play-button[1]/ul[1]/li[1]/button[1]")
 	public static WebElement HeaderWatchFreeButton;
 	
-	@FindBy(xpath="//li[@class='ng-star-inserted']/div")
+	@FindBy(xpath="//li[@class='ng-star-inserted']/button")
 	public static WebElement BuyButton;
 	
 	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[2]/div[1]/div[2]/div[2]/ul[1]/app-gud-play-button[1]/ul[1]/li[2]/div[1]/div[1]")
@@ -94,6 +97,8 @@ public class shodetailpage extends BaseSetup
 	
 	@FindBy(xpath="/html[1]/body[1]/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[3]/div[3]/div[1]/p[1]")
 	public static WebElement FeelersText;
+	
+	
 	
 	
 	
