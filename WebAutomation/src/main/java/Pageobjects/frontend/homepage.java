@@ -30,16 +30,13 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//h3[@class='ng-star-inserted']")
 	public static List<WebElement> ShoNamesOnBannerText;
 	 
-	@FindBy(xpath="//div[@class='welcome-content-inner']")
-	public static WebElement WelcomeContent;
-	 
 	@FindBy(xpath="//div[@class='gs-coins-btn']/button")
 	public static WebElement CoinsButton;
 	
 	@FindBy(xpath="//div[@class='user-navigation']/button")
     public static WebElement HomePageSignInButton;
 	
-	@FindBy(xpath="//input[@placeholder='Search for Movies, Web Series, Studios, etc.']")
+	@FindBy(xpath="//input[@placeholder='Search for Movies, Series, Studios']")
 	public static WebElement HomePageSearch;
 	
 	@FindBy(xpath="//div[@class='ng-scroll-content']/ul/li/span")

@@ -8,7 +8,6 @@ Feature: Paywall Functionality
  And Coins section is avilable
  And Page Title is showing "GudSho - Watch Unlimited Movies & Web Series Online"
  And Banners is showing on home page
- And Icons below the banners is showing
  And Footer Section is visible
  And Header Logo is visible
  
@@ -55,17 +54,27 @@ Examples:
 |Talent   |
 
 
+Scenario Outline: Search any sho and click on Request Release
+Given Search <shoseries> and click on Request Release button
+Then Page should redirect to the login page and will ask to login again
+And Do same from headder and it should have same beahviour as above
+
+Examples:
+|shoseries|
+|Gudsho Series |
+
+
 Scenario Outline: Search any sho and select season and episode click on episode card
 Given Search <shoseries> and click on first episode
 Then Page should redirect to the login page
 And Click back and now select <season name> from season dropdown
 Then Click on any episode it should redirect to login page
 
-
 Examples:
 |shoseries|season name|
 |Talent   |Season 3   |
 |Gudsho Series|Season 2|
+|Minister  |Season 2|
 
 
 Scenario Outline: Search any sho and Click on Episode from Full episode page
@@ -74,11 +83,11 @@ Then Page should redirect to the login page
 And select any <season name> from the season dropdown and on episode
 Then Page should redirect to the login page
 
-
 Examples:
 |shoseries|season name|
 |Talent   |Season 3   |
 |Gudsho Series|Season 2|
+|Minister  |Season 2|
 
 Scenario Outline: Play a promo from Sho detail page and like
 Given Search <shoseries> and click on any promo
@@ -146,7 +155,7 @@ Examples:
 |studio |
 |Sameer | 
 
-Scenario Outline: Search any studio and from studio banner click on nay banner
+Scenario Outline: Search any studio and from studio banner click on any banner
 Given Search any <studio> from click on banner having <shoname>
 Then it should redirect to the sho detail page and verify <shoname>
 
