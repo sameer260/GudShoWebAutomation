@@ -105,6 +105,7 @@ public class SmokeTest extends BaseSetup{
     	ShareFeature.whatsappswindowhandle();
     	ShareFeature.CopyLinkShare.click();
     	ShareFeature.copylinkwindowhandle();
+    	ShareFeature.copylinkwindowhandle();
     	
     }
 
