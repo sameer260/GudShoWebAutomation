@@ -3,7 +3,28 @@ Feature: Paywall Functionality
 
 
 
+<<<<<<< HEAD
                                 
+=======
+ Scenario: Open the WebSite and Check SignIn button is available
+ Given SignIn button is avialable
+ And Coins section is avilable
+ And Page Title is showing "GudSho - Watch Unlimited Movies & Web Series Online"
+ And Banners is showing on home page
+ And Footer Section is visible
+ And Header Logo is visible
+ 
+ 
+ Scenario Outline: Click on HomePage Slider and verify its redirected to correct sho page
+ Given Click on <bannernum> and verify its redicted to sho detail page
+ 
+ 
+ Examples:
+ |bannernum|
+ |0        |
+ 
+                               
+>>>>>>> refs/remotes/origin/develop
                                 #######  Sho Detail Page ###########
 
 Scenario Outline: Search Any sho and add to watchlist

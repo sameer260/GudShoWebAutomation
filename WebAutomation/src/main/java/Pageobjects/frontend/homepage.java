@@ -36,11 +36,15 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='user-navigation']/button")
     public static WebElement HomePageSignInButton;
 	
+<<<<<<< HEAD
 	@FindBy(id="headerSearch")
 	public static WebElement SearchICon;
 	
 	
 	@FindBy(xpath="//input[@placeholder='Search']")
+=======
+	@FindBy(xpath="//input[@placeholder='Search for Movies, Series, Studios']")
+>>>>>>> refs/remotes/origin/develop
 	public static WebElement HomePageSearch;
 	
 	@FindBy(xpath="//div[@class='ng-scroll-content']/ul/li/span/span")
