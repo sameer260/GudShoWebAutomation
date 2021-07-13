@@ -1,6 +1,7 @@
 package steps.frontend;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.interactions.Actions;
@@ -110,6 +111,38 @@ public class SmokeTest extends BaseSetup{
     	
     	
     }
+    @When("^Play (.+) and like promo$")
+    public void play_and_like_promo(String promoname) throws Throwable {
+        shodetailpage.PromoCardClick(promoname);
+        Actions a=new Actions(driver);
+        a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
+        videoplayer.PlayerGudICon.click();
+        wait.until(ExpectedConditions.visibilityOf(ToastandErrormessages.ToastMessageText));
+        String promonameonplayer=videoplayer.Promoname();
+        log.info(promonameonplayer);
+        String actual=ToastandErrormessages.ToastMessageText.getText();
+        log.info(actual);
+        assertEquals(actual,"You liked this promo");
+        assertTrue(promonameonplayer.equalsIgnoreCase(promoname));
+        videoplayer.CloseButton.click();
+    }
+
+    @Then("^On home page check liked (.+) is showing in my gud promos$")
+    public void on_home_page_check_liked_is_showing_in_my_gud_promos(String promoname) throws Throwable {
+    	homepage.HeaderLogo.click();
+        commonlocatorsandmethods.scrolldownm();
+        String PromonameongudPromos=homepage.mygudpromos(promoname);
+        log.info(PromonameongudPromos);
+        assertEquals(promoname,PromonameongudPromos);
+    }
+    @Then("^Click on Studio link and check redirected to studio detail page$")
+    public void click_on_studio_link_and_check_redirected_to_studio_detail_page() throws Throwable {
+        String str=shodetailpage.StudionameinStudioLink.getText();
+        str.substring(0,str.length()-2);
+        shodetailpage.StudioLink.click();
+    }
+
+    
 
 	 
 

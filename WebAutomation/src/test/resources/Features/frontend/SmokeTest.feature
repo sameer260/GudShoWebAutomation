@@ -31,6 +31,24 @@ Feature: Smoke Test cases
      |Talent |    
      
      
+   Scenario Outline: Search any Sho and Play Promo and Like
+     Given Search any <ShoName> and verfiy its redirected to correct page
+     When Play <PromoName> and like promo
+     Then On home page check liked <PromoName> is showing in my gud promos
+     
+     Examples:
+     |ShoName|PromoName                     | 
+     |Talent |Vakeel Sab Theatrical Trailer |
+     
+     @test
+   Scenario Outline: Search any Sho and Share the Sho
+     Given Search any <ShoName> and verfiy its redirected to correct page
+     Then Click on Studio link and check redirected to studio detail page
+     
+     
+     Examples:
+     |ShoName|
+     |Talent |
      
      
      

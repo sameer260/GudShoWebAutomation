@@ -45,5 +45,14 @@ public class videoplayer extends BaseSetup{
 	
 	@FindBy(xpath="/html[1]/body[1]/app-root[1]/div[1]/app-watch[1]/app-player[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[2]/h2[1]")
 	public static WebElement ShoNameOnPlayer;
+	
+	@FindBy(xpath="//div[@id='inner-video']/div[1]/div[3]/span")
+	public static WebElement PromoNameonPlayer;
+	
+	public static String Promoname()
+	{
+		String str=PromoNameonPlayer.getText();
+		return str.substring(17);
+	}
 
 }

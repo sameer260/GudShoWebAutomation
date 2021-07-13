@@ -78,6 +78,13 @@ public class paymentpage extends BaseSetup {
 	public static WebElement RazorPayFailureButton;
 	
 	
+	//Razor Pay Standard Check out
+	
+	@FindBy(xpath="//div[@class='methods-block']/div/button")
+	public static List<WebElement> RazorPayPaymentMethods; 
+	
+	
+	
 	
 	
 	
