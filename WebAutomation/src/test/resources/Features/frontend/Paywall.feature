@@ -1,11 +1,6 @@
 @Signup
 Feature: Paywall Functionality
 
-
-
-<<<<<<< HEAD
-                                
-=======
  Scenario: Open the WebSite and Check SignIn button is available
  Given SignIn button is avialable
  And Coins section is avilable
@@ -24,7 +19,7 @@ Feature: Paywall Functionality
  |0        |
  
                                
->>>>>>> refs/remotes/origin/develop
+
                                 #######  Sho Detail Page ###########
 
 Scenario Outline: Search Any sho and add to watchlist

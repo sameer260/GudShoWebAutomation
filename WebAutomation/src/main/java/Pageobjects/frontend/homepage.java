@@ -36,15 +36,11 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='user-navigation']/button")
     public static WebElement HomePageSignInButton;
 	
-<<<<<<< HEAD
-	@FindBy(id="headerSearch")
+
+	@FindBy(id="home-search-icon")
 	public static WebElement SearchICon;
 	
-	
 	@FindBy(xpath="//input[@placeholder='Search']")
-=======
-	@FindBy(xpath="//input[@placeholder='Search for Movies, Series, Studios']")
->>>>>>> refs/remotes/origin/develop
 	public static WebElement HomePageSearch;
 	
 	@FindBy(xpath="//div[@class='ng-scroll-content']/ul/li/span/span")
@@ -74,7 +70,7 @@ public class homepage extends BaseSetup {
 		homepage.SearchICon.click();
 		homepage.HomePageSearch.sendKeys(shoseriesorstudioname);
 		log.info("Sent Text in the Home Page is "+shoseriesorstudioname);
-		Thread.sleep(2500);
+		Thread.sleep(3000);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfAllElements(AutoSuggestiveDropdown));
 		for (int i = 0; i < AutoSuggestiveDropdown.size(); i++) {

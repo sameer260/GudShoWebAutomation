@@ -1,5 +1,5 @@
 Feature: Smoke Test cases
-
+   
   Scenario Outline: Search any sho and buy this sho and Play
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Buy the sho using <PaymentGateway> with <PaymentScenario>
@@ -20,7 +20,7 @@ Feature: Smoke Test cases
       | ShoName |
       | Talent  |
      
-    @test  
+     
    Scenario Outline: Search any Sho and Share the Sho
      Given Search any <ShoName> and verfiy its redirected to correct page
      When Click on Share button

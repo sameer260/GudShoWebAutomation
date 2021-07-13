@@ -43,7 +43,9 @@ public class SmokeTest extends BaseSetup{
 	@When("^Buy the sho using (.+) with (.+)$")
 	public void buy_the_sho_using_with(String paymentgateway, String paymentscenario) throws Throwable {
 		shodetailpage.BuyButton.click();
+		Thread.sleep(2000);
 		paymentpage.PopupContinueButton.click();
+		Thread.sleep(4000);
 		/*paymentpage.SelectPaymentMethod(paymentgateway);
 		if(paymentgateway.equalsIgnoreCase("Razorpay"))
 		{
