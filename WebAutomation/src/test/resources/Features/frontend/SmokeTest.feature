@@ -1,13 +1,14 @@
 Feature: Smoke Test cases
    
+   @test
   Scenario Outline: Search any sho and buy this sho and Play
     Given Search any <ShoName> and verfiy its redirected to correct page
-    When Buy the sho using <PaymentGateway> with <PaymentScenario>
+    When Buy the sho using <PaymentMode> with <PaymentScenario>
     Then Verify after payment <ShoName> is playing and close the player 
 
     Examples: 
-      | ShoName  | PaymentGateway | PaymentScenario |
-      | Talent   | Razorpay       | Success         |
+      | ShoName  | PaymentMode    | PaymentScenario |
+      | Carmen Sandiago   | Card           | Success         |
     
   
   Scenario Outline: Search any sho and add in to watch list
@@ -60,7 +61,7 @@ Feature: Smoke Test cases
      |ShoName|
      |Talent |
      
-     @test
+     
    Scenario Outline: Search any sho and buy this sho and Play
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Play watch free content and close the player
