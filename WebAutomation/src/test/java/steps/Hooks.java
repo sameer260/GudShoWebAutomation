@@ -37,10 +37,11 @@ public class Hooks extends BaseSetup {
 		SignUp sl=new SignUp();
 		ToastandErrormessages ts=new ToastandErrormessages();
 		SignUp.HomePageSignInButton.click();
-		SignUp.PhoneEmailIdField.sendKeys("9542840307");
-		SignUp.PasswordField.sendKeys("sameer6789");
+		SignUp.PhoneEmailIdField.sendKeys("6379039922");
+		SignUp.PasswordField.sendKeys("Test@123");
 		SignUp.LoginPageSignInButton.click();
 		ToastandErrormessages.ToastMessageClose.click();
+		
 		
 		
 	}
