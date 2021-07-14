@@ -52,7 +52,7 @@ Feature: Smoke Test cases
       | ShoName |
       | Talent  |
 
-  Scenario Outline: Search any sho and buy this sho and Play
+  Scenario Outline: Search watch free content and Check in continue watching
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Play watch free content and close the player
     Then On Home Page check continue wathing is showing <ShoName>
