@@ -2,6 +2,7 @@ package Pageobjects.frontend;
 
 import java.util.List;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -71,11 +72,6 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//h2[text()='Musical Tracks']")
 	public static WebElement MusicalTracksTitle;
 	
-	@FindBy(xpath="//div[@class='card-left box-promo']/h4")
-	public static List<WebElement> PromoNamesText;
-	
-	@FindBy(xpath="//div[@class='mat-ripple card-img']")
-	public static List<WebElement> PromoCards;
 	
 	@FindBy(xpath="//span[text()=' Full Episodes ']")
 	public static WebElement FullEpisodesLink;
@@ -97,6 +93,62 @@ public class shodetailpage extends BaseSetup
 	
 	@FindBy(xpath="/html[1]/body[1]/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[3]/div[3]/div[1]/p[1]")
 	public static WebElement FeelersText;
+	
+	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[2]/a[1]")
+	public static WebElement StudioLink;
+	
+	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[2]/a[1]/div[2]/h6")
+	public static WebElement StudionameinStudioLink;
+	
+	
+	//Promo Cards
+	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[2]/h4")
+	public static List<WebElement> PromoNamesofPromoCards;
+	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[2]/div/p")
+	public static List<WebElement> ViewCountofPromos;
+	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[2]/div/span")
+	public static List<WebElement> GudCountofPromos;
+	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[1]")
+	public static List<WebElement> PromoCards;
+	
+	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/div[2]/section[1]/div[1]/app-gud-slider[1]/div[1]/div[2]/swiper[1]/div[1]/app-gud-card[1]/div[1]/div[1]/div[1]/div[3]")
+	public static List<WebElement> PromoShareIcon;
+	
+	public static String PromoCardClick(String promoname)
+	{
+		Actions a =new Actions(driver);
+		String promonameoncard = null;
+		for(int i=0;i<PromoNamesofPromoCards.size();i++)
+		{
+			
+			if(PromoNamesofPromoCards.get(i).getText().equalsIgnoreCase(promoname))
+			{
+				promonameoncard=PromoNamesofPromoCards.get(i).getText();
+				a.moveToElement(PromoCards.get(i)).click().build().perform();
+			}
+		}
+		return promonameoncard;
+	}
+	public static String PromoCardShare(String promoname)
+	{
+		Actions a =new Actions(driver);
+		String promonameoncard = null;
+		for(int i=0;i<PromoNamesofPromoCards.size();i++)
+		{
+			if(PromoNamesofPromoCards.get(i).getText().equalsIgnoreCase(promoname))
+			{
+				promonameoncard=PromoNamesofPromoCards.get(i).getText();
+				a.moveToElement(PromoCards.get(i)).build().perform();
+				PromoShareIcon.get(i).click();
+				
+			}
+		}
+		return promonameoncard;
+	}
 	
 	
 	
