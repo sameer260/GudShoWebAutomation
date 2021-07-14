@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import Pageobjects.frontend.ShareFeature;
 import Pageobjects.frontend.ToastandErrormessages;
 import Pageobjects.frontend.commonlocatorsandmethods;
