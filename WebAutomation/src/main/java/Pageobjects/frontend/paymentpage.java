@@ -1,6 +1,7 @@
 package Pageobjects.frontend;
 
 import java.util.Iterator;
+
 import java.util.List;
 import java.util.Set;
 
@@ -78,19 +79,151 @@ public class paymentpage extends BaseSetup {
 	public static WebElement RazorPayFailureButton;
 	
 	
+	//Razor Pay Standard Check out
+	
+	@FindBy(xpath="//div[@class='methods-block']/div/button")
+	public static List<WebElement> RazorPayPaymentModes; 
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[1]/div[1]")
+	public static WebElement CardNum;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[1]/div[2]")
+	public static WebElement ExpiryField;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[2]/div[1]")
+	public static WebElement CardHolderName;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[2]/div[2]")
+	public static WebElement CVVNo;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[3]/div/label/span")
+	public static WebElement RememberCheckbox;
+	
+	@FindBy(id="footer")
+	public static WebElement PayButton;
+	
+	@FindBy(id="vpa-upi")
+	public static WebElement UPIIdField;
+	
+	@FindBy(id="bank-item-SBIN")
+	public static WebElement SBIBankNetBanking;
+	
+	@FindBy(className="razorpay-checkout-frame")
+	public static WebElement RozarPayFrame;
+	
+	@FindBy(id="otp-sec")
+	public static WebElement SkipOTP;
 	
 	
-	
-	public static void PayTmPaymentCreditCard()
+	public static void PaymentviaCard()
 	{
-		PaymentviaPaytm.click();
-		PayTMDebitCardPayment.click();
-		PayTmCardField.sendKeys("4111111111111111");
-		PayTmCardExpiryMonth.sendKeys("10");
-		PayTmCardExpiryYear.sendKeys("25");
-		PayTmCVVno.sendKeys("123");
-		PayButtonInPayTM.click();
+		
+		CardNum.click();
+		CardNum.sendKeys("4111111111111111");
+		ExpiryField.sendKeys("1025");
+		CardHolderName.sendKeys("sameer");
+		CVVNo.sendKeys("123");
+		PayButton.click();
 	}
+	
+	
+	
+	public static void SelectPaymentMode(String PaymentMode) throws InterruptedException
+	{
+			
+		if(PaymentMode.equalsIgnoreCase("Card"))
+		{
+			RazorPayPaymentModes.get(0).click();
+			Thread.sleep(1000);
+			if(SkipOTP.isDisplayed())
+			{
+				SkipOTP.click();
+				Thread.sleep(2000);
+				//PaymentviaCard();
+				CardNum.click();
+				CardNum.sendKeys("4111111111111111");
+				ExpiryField.sendKeys("1025");
+				CardHolderName.sendKeys("sameer");
+				CVVNo.sendKeys("123");
+				PayButton.click();
+			}
+			else
+			{
+			PaymentviaCard();
+			Thread.sleep(3000);
+			}
+        }
+		else if(PaymentMode.equalsIgnoreCase("UPI"))
+		{
+			RazorPayPaymentModes.get(1).click();
+			//PaymentviaUpi();
+			//Thread.sleep(3000);
+		}
+		else if(PaymentMode.equalsIgnoreCase("NetBannking"))
+		{
+			RazorPayPaymentModes.get(2).click();
+			//PayTmPaymentCreditCard();
+		}
+	}
+	
+	
+	
+	
+	
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	
+	
 	
 	public static void PaymentviaRazorPay()
 	{
@@ -106,27 +239,6 @@ public class paymentpage extends BaseSetup {
 		UPIField.sendKeys("sameer@ybl");
 		UPIPayButton.click();
 		
-	}
-	
-	public static void SelectPaymentMethod(String PaymentMethod) throws InterruptedException
-	{
-		if(PaymentMethod.equalsIgnoreCase("Razorpay"))
-		{
-			PaymentMethods.get(1).click();
-			PaymentviaRazorPay();
-			Thread.sleep(3000);
-        }
-		else if(PaymentMethod.equalsIgnoreCase("UPI"))
-		{
-			PaymentMethods.get(2).click();
-			PaymentviaUpi();
-			Thread.sleep(3000);
-		}
-		else if(PaymentMethod.equalsIgnoreCase("Paytm"))
-		{
-			PaymentMethods.get(0).click();
-			PayTmPaymentCreditCard();
-		}
 	}
 	
 	
@@ -198,6 +310,6 @@ public class paymentpage extends BaseSetup {
 		driver.switchTo().window(MainWindow);
 	}
 	
-	
+	*/
 
-}
+

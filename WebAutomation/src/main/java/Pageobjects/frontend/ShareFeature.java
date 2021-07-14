@@ -1,6 +1,7 @@
 package Pageobjects.frontend;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
@@ -14,6 +15,7 @@ import java.util.Set;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,6 +24,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Resources.BaseSetup;
 
 public class ShareFeature extends BaseSetup {
+	
+	
+	videoplayer video=new videoplayer();
 	
 	    public ShareFeature()
 	    {
@@ -72,6 +77,52 @@ public class ShareFeature extends BaseSetup {
 		
 		@FindBy(className="_2y_4")
 		private static WebElement Whatsapplinktext;
+		
+		@FindBy(xpath="//div[@class='btn-container']/button[2]")
+		private static WebElement EmbedCopyLinkButton;
+		
+		@FindBy(xpath="//div[@class='btn-container']/button[1]")
+		private static WebElement EmbedCancelButton;
+		
+		@FindBy(xpath="//div[@class='embed-popup ng-star-inserted']/textarea")
+		private static WebElement EmbedSharetextArea;
+		
+		
+		@FindBy(xpath="//ul[@class='shocial-links ng-star-inserted']/li/span")
+		private static List<WebElement> AllSocialIconsShare;
+		
+		
+	public static String SocialShare(String ShareType)
+			throws InterruptedException, HeadlessException, UnsupportedFlavorException, IOException {
+		String promonameonplayer = null;
+		WebDriverWait wait=new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(SharePopup));
+		for (int i = 0; i < AllSocialIconsShare.size(); i++) {
+			String SocialiconName=AllSocialIconsShare.get(i).getText();
+			AllSocialIconsShare.get(i).click();
+			if (SocialiconName.equalsIgnoreCase("Facebook")) {
+				facebookwindowhandle();
+			} else if (SocialiconName.equalsIgnoreCase("Twitter")) {
+				twitterwindowhandle();
+			} else if (SocialiconName.equalsIgnoreCase("Whatsapp")) {
+				if (ShareType.equalsIgnoreCase("shoshare")) {
+					whatsappswindowhandle();
+				} else if (ShareType.equalsIgnoreCase("promoshare")) {
+					promonameonplayer = whatsappwindowhandlforpromo();
+				}
+			} else if (SocialiconName.equalsIgnoreCase("Copy Link")) {
+				if (ShareType.equalsIgnoreCase("shoshare")) {
+					copylinkwindowhandle();
+				} else if (ShareType.equalsIgnoreCase("promoshare")) {
+					promonameonplayer = copylinkwindowhandleforpromo();
+				}
+
+			} else if (SocialiconName.equalsIgnoreCase("Embed")) {
+				EmbedShare();
+			}
+		}
+		return promonameonplayer;
+	}
 		
 		
 		
@@ -188,6 +239,71 @@ public class ShareFeature extends BaseSetup {
 		assertEquals(currenttabtitle, parenttabtitle);
 		String parenturl = driver.getCurrentUrl();
 		assertEquals(parenturl, childurl);
+
+	}
+	public static void EmbedShare()
+	{
+		assertTrue(EmbedSharetextArea.isDisplayed());
+		EmbedCopyLinkButton.click();
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(ToastandErrormessages.ToastMessageText));
+		String Actual = ToastandErrormessages.ToastMessageText.getText();
+		assertEquals(Actual, "Link Copied!");
+		EmbedCancelButton.click();
+	}
+	
+	public static String whatsappwindowhandlforpromo() throws InterruptedException
+	{
+		Actions a =new Actions(driver);
+		String text = null;
+		String linkinwhatsappfield=null;
+		String MainWindow = driver.getWindowHandle();
+		Set<String> s1 = driver.getWindowHandles();
+		Iterator<String> i1 = s1.iterator();
+		while (i1.hasNext()) {
+			String ChildWindow = i1.next();
+
+			if (!MainWindow.equalsIgnoreCase(ChildWindow)) {
+				driver.switchTo().window(ChildWindow);
+				WhatsappButton.isDisplayed();
+				text = Whatsapplinktext.getText();
+				linkinwhatsappfield=text.substring(text.lastIndexOf("https"));
+				System.out.println(linkinwhatsappfield);
+				Thread.sleep(1000);
+				driver.close();
+
+			}
+
+		}
+		driver.switchTo().window(MainWindow);
+		((JavascriptExecutor) driver).executeScript("window.open()");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		driver.get(linkinwhatsappfield);
+		Thread.sleep(2000);
+		a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
+		String promonameonplayer=videoplayer.Promoname();
+		driver.close();
+		driver.switchTo().window(tabs.get(0));
+		return promonameonplayer;
+		
+	   }
+	public static String copylinkwindowhandleforpromo()
+			throws InterruptedException, HeadlessException, UnsupportedFlavorException, IOException {
+		Actions a =new Actions(driver);
+		String Actual = ToastandErrormessages.ToastMessageText.getText();
+		assertEquals(Actual, "Link Copied!");
+		String myText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+		((JavascriptExecutor) driver).executeScript("window.open()");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		driver.get(myText);
+		Thread.sleep(2000);
+		a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
+		String promonameonplayer=videoplayer.Promoname();
+		driver.close();
+		driver.switchTo().window(tabs.get(0));
+		return promonameonplayer;
 
 	}
         
