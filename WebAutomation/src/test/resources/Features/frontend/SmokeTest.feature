@@ -68,7 +68,7 @@ Feature: Smoke Test cases
       
       
     ##Paywall Scenarios  
-      
+     @Paywall 
   Scenario Outline: Add to watchlist mini popup validation
     Given Search any sho <shoname>
     And From sho detail page click on add to watchlist
@@ -77,7 +77,7 @@ Feature: Smoke Test cases
     Examples: 
       | shoname |
       | avatar  |
-
+   @Paywall
   Scenario Outline: Create Gud mini popup validation
     Given Search any sho <shoname>
     And From sho detail page click on any promo
@@ -87,7 +87,7 @@ Feature: Smoke Test cases
     Examples: 
       | shoname |
       | avatar  |
-
+   @Paywall
   Scenario Outline: Buy button redirection validation
     Given Search any sho <shoname>
     And From sho detail page click on Buy button
@@ -96,7 +96,7 @@ Feature: Smoke Test cases
     Examples: 
       | shoname  |
       | hostages |
-
+    @Paywall
   Scenario Outline: Follow Button mini popup validation
     Given Search any sho <shoname>
     And From studio detail page click on follow button

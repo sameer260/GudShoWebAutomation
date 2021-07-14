@@ -29,7 +29,7 @@ public class Hooks extends BaseSetup {
 		BaseSetup.intiliazedriver();
 		
 	}	
-	@Before("not @Signup")
+	@Before("not @Paywall")
 	public void loginapplication() throws InterruptedException, IOException
 	{
 		
