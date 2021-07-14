@@ -1066,3 +1066,36 @@
 2021-07-13 17:24:51 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
 2021-07-13 17:26:23 INFO  homepage:72 - Sent Text in the Home Page is avatar
 2021-07-13 17:26:27 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 12:16:19 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 12:16:35 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 12:49:14 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 12:49:19 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 12:49:32 INFO  SmokeTest:173 - Printing the sho name:null
+2021-07-14 13:08:24 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 13:08:44 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 13:12:49 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 13:13:17 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 13:13:22 INFO  SmokeTest:176 - Printing the sho name:AVATAR
+2021-07-14 13:19:18 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 13:19:22 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 13:19:52 INFO  SmokeTest:173 - Printing the sho name:AVATAR
+2021-07-14 13:31:49 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 13:32:05 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 13:32:33 INFO  SmokeTest:176 - Printing the sho name:AVATAR
+2021-07-14 13:52:05 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 13:52:24 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 13:52:33 INFO  SmokeTest:151 - Printing the sho name:AVATAR
+2021-07-14 13:54:06 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 13:54:10 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 13:54:28 INFO  SmokeTest:151 - Printing the sho name:AVATAR
+2021-07-14 14:01:38 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 14:01:47 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 14:02:06 INFO  SmokeTest:151 - Printing the sho name:AVATAR
+2021-07-14 14:05:15 INFO  homepage:72 - Sent Text in the Home Page is hostages
+2021-07-14 14:05:19 INFO  homepage:78 - The Auto suggestive dropdown shows:Hostages
+2021-07-14 14:05:25 INFO  SmokeTest:151 - Printing the sho name:Hostages
+2021-07-14 14:54:30 INFO  homepage:72 - Sent Text in the Home Page is avatar
+2021-07-14 14:55:08 INFO  homepage:78 - The Auto suggestive dropdown shows:AVATAR
+2021-07-14 14:55:16 INFO  SmokeTest:181 - Printing the sho name:AVATAR
+2021-07-14 14:57:11 INFO  homepage:72 - Sent Text in the Home Page is hostages
+2021-07-14 14:57:20 INFO  homepage:78 - The Auto suggestive dropdown shows:Hostages

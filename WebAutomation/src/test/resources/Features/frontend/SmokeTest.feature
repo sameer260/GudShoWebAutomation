@@ -28,12 +28,43 @@ Feature: Smoke Test cases
 
   ##Then Verify after payment <ShoName> is playing and close the player
   ## Paywall santhosh
-  @Signup @test1
+  @Signup @paywall
   Scenario Outline: Add to watchlist mini popup validation
-    And Search any sho <shoname>
-    When From sho detail page click on add to watchlist
-    Then Validate the minipopup
+    Given Search any sho <shoname>
+    And From sho detail page click on add to watchlist
+    When Validate the minipopup add to watchlist
 
     Examples: 
       | shoname |
       | avatar  |
+
+  @Signup 
+  Scenario Outline: Create Gud mini popup validation
+    Given Search any sho <shoname>
+    And From sho detail page click on any promo
+    When while playing click on greate gud button
+    Then Validate the minipopup Create gud
+
+    Examples: 
+      | shoname |
+      | avatar  |
+
+  @Signup @test1
+  Scenario Outline: Buy button redirection validation
+    Given Search any sho <shoname>
+    And From sho detail page click on Buy button
+    Then Validate Home page redirection
+
+    Examples: 
+      | shoname  |
+      | hostages |
+
+  @Signup
+  Scenario Outline: Follow Button mini popup validation
+    Given Search any sho <shoname>
+    And From studio detail page click on follow button
+    When Validate the minipopup follow button
+
+    Examples: 
+      | shoname         |
+      | santii's studio |
