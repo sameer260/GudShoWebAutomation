@@ -1,6 +1,7 @@
 package Pageobjects.frontend;
 
 import java.util.Iterator;
+
 import java.util.List;
 import java.util.Set;
 
@@ -83,10 +84,84 @@ public class paymentpage extends BaseSetup {
 	@FindBy(xpath="//div[@class='methods-block']/div/button")
 	public static List<WebElement> RazorPayPaymentMethods; 
 	
+	@FindBy(xpath="//div[@id='add-card-container']/div[1]/div[1]")
+	public static WebElement CardNum;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[1]/div[2]")
+	public static WebElement ExpiryField;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[2]/div[1]")
+	public static WebElement CardHolderName;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[2]/div[2]")
+	public static WebElement CVVNo;
+	
+	@FindBy(xpath="//div[@id='add-card-container']/div[3]/div/label/span")
+	public static WebElement RememberCheckbox;
+	
+	@FindBy(id="footer")
+	public static WebElement PayButton;
+	
+	@FindBy(id="vpa-upi")
+	public static WebElement UPIIdField;
+	
+	@FindBy(id="bank-item-SBIN")
+	public static WebElement SBIBankNetBanking;
 	
 	
 	
-	
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
 	
 	public static void PayTmPaymentCreditCard()
 	{
@@ -205,6 +280,6 @@ public class paymentpage extends BaseSetup {
 		driver.switchTo().window(MainWindow);
 	}
 	
-	
+	*/
 
-}
+

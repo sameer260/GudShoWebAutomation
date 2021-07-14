@@ -73,6 +73,11 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card")
 	public static WebElement MyGudPromosRow;
 	
+	@FindBy(xpath="//div[@class='home-slider continue ng-star-inserted']/app-gud-slider/div/div[2]/swiper/div/app-gud-card/div/div/div[2]")
+	public static List<WebElement> ShoNamesInContinueWatching;
+	
+	
+	
 	static By MyGudPromoCards=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div");
 	static By PromoNameonGudPromos=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div/div/div[2]/h4");
 	

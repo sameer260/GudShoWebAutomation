@@ -3,7 +3,7 @@ Feature: Smoke Test cases
   Scenario Outline: Search any sho and buy this sho and Play
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Buy the sho using <PaymentGateway> with <PaymentScenario>
-   
+    Then Verify after payment <ShoName> is playing and close the player 
 
     Examples: 
       | ShoName  | PaymentGateway | PaymentScenario |
@@ -24,11 +24,11 @@ Feature: Smoke Test cases
    Scenario Outline: Search any Sho and Share the Sho
      Given Search any <ShoName> and verfiy its redirected to correct page
      When Click on Share button
-     Then Share the sho using all social icons
+     Then Share the <shoorpromo> using all social icons
      
      Examples:
-     |ShoName|
-     |Talent |    
+     |ShoName|shoorpromo|
+     |Talent | shoshare |   
      
      
    Scenario Outline: Search any Sho and Play Promo and Like
@@ -40,8 +40,18 @@ Feature: Smoke Test cases
      |ShoName|PromoName                     | 
      |Talent |Vakeel Sab Theatrical Trailer |
      
-     @test
-   Scenario Outline: Search any Sho and Share the Sho
+     
+     Scenario Outline: Search any Sho and Share promo
+     Given Search any <ShoName> and verfiy its redirected to correct page
+     Then Hover on <PromoName> card and share promo <ShareType> using all shares 
+     
+     
+     Examples:
+     |ShoName|PromoName                     |ShareType |
+     |Talent |Vakeel Sab Theatrical Trailer |promoshare|
+     
+     
+   Scenario Outline: Search any Sho and redirection of studio page
      Given Search any <ShoName> and verfiy its redirected to correct page
      Then Click on Studio link and check redirected to studio detail page
      
@@ -49,6 +59,16 @@ Feature: Smoke Test cases
      Examples:
      |ShoName|
      |Talent |
+     
+     @test
+   Scenario Outline: Search any sho and buy this sho and Play
+    Given Search any <ShoName> and verfiy its redirected to correct page
+    When Play watch free content and close the player
+    Then On Home Page check continue wathing is showing <ShoName>
+    
+    Examples: 
+      | ShoName |
+      | Paytm   | 
      
      
      

@@ -115,6 +115,9 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[1]")
 	public static List<WebElement> PromoCards;
 	
+	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/div[2]/section[1]/div[1]/app-gud-slider[1]/div[1]/div[2]/swiper[1]/div[1]/app-gud-card[1]/div[1]/div[1]/div[1]/div[3]")
+	public static List<WebElement> PromoShareIcon;
+	
 	public static String PromoCardClick(String promoname)
 	{
 		Actions a =new Actions(driver);
@@ -126,6 +129,22 @@ public class shodetailpage extends BaseSetup
 			{
 				promonameoncard=PromoNamesofPromoCards.get(i).getText();
 				a.moveToElement(PromoCards.get(i)).click().build().perform();
+			}
+		}
+		return promonameoncard;
+	}
+	public static String PromoCardShare(String promoname)
+	{
+		Actions a =new Actions(driver);
+		String promonameoncard = null;
+		for(int i=0;i<PromoNamesofPromoCards.size();i++)
+		{
+			if(PromoNamesofPromoCards.get(i).getText().equalsIgnoreCase(promoname))
+			{
+				promonameoncard=PromoNamesofPromoCards.get(i).getText();
+				a.moveToElement(PromoCards.get(i)).build().perform();
+				PromoShareIcon.get(i).click();
+				
 			}
 		}
 		return promonameoncard;
