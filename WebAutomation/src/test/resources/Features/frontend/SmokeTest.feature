@@ -1,5 +1,8 @@
 Feature: Smoke Test cases
 
+
+  ## Sho Detail Page Scenarios
+  
   Scenario Outline: Search any sho and buy this sho and Play
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Buy the sho using <PaymentMode> with <PaymentScenario>
@@ -60,3 +63,46 @@ Feature: Smoke Test cases
     Examples: 
       | ShoName |
       | Paytm   |
+      
+      
+      
+      
+    ##Paywall Scenarios  
+     @Paywall 
+  Scenario Outline: Add to watchlist mini popup validation
+    Given Search any sho <shoname>
+    And From sho detail page click on add to watchlist
+    When Validate the minipopup add to watchlist
+
+    Examples: 
+      | shoname |
+      | avatar  |
+   @Paywall
+  Scenario Outline: Create Gud mini popup validation
+    Given Search any sho <shoname>
+    And From sho detail page click on any promo
+    When while playing click on greate gud button
+    Then Validate the minipopup Create gud
+
+    Examples: 
+      | shoname |
+      | avatar  |
+   @Paywall
+  Scenario Outline: Buy button redirection validation
+    Given Search any sho <shoname>
+    And From sho detail page click on Buy button
+    Then Validate Home page redirection
+
+    Examples: 
+      | shoname  |
+      | hostages |
+    @Paywall
+  Scenario Outline: Follow Button mini popup validation
+    Given Search any sho <shoname>
+    And From studio detail page click on follow button
+    When Validate the minipopup follow button
+
+    Examples: 
+      | shoname         |
+      | santii's studio |
+      

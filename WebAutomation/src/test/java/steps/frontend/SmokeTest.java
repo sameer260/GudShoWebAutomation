@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +18,7 @@ import Pageobjects.frontend.shodetailpage;
 import Pageobjects.frontend.studiodetailpage;
 import Pageobjects.frontend.videoplayer;
 import Resources.BaseSetup;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -177,6 +179,120 @@ public class SmokeTest extends BaseSetup{
     
 
 	 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+	 * Paywall scripting for sanity by santhosh
+	 */
+
+	@Given("^Open the Chrome and launch the application$")
+	public void open_the_chrome_and_launch_the_application() throws Throwable {
+		BaseSetup.intiliazedriver();
+		log.info("Browser and App launched");
+
+	}
+
+	@When("^From sho detail page click on add to watchlist$")
+	public void from_sho_detail_page_click_on_add_to_watchlist() throws Throwable {
+		wait.until(ExpectedConditions.visibilityOf(shodetailpage.WatchListButton));
+		log.info("Clicking on the add to watchlist button");
+		shodetailpage.WatchListButton.click();
+
+	}
+
+	@When("^Validate the minipopup add to watchlist$")
+	public void validate_the_minipopup_add_to_watchlist() throws Throwable {
+		shodetailpage.SignInPopUp.isDisplayed();
+		shodetailpage.SignInPopUpHeadderText.isDisplayed();
+		assertEquals("Want to save & watch later?", shodetailpage.SignInPopUpHeadderText.getText());
+		shodetailpage.SignInPopUpDescriptionText.isDisplayed();
+		assertEquals("Sign In to save this video & watch again later",
+				shodetailpage.SignInPopUpDescriptionText.getText());
+		log.info("All minipopup elements are displaying");
+		shodetailpage.PopUpSignInButton.click();
+		driver.findElement(By.xpath("//h1")).isDisplayed();
+
+	}
+
+	@Then("^Validate the minipopup Create gud$")
+	public void validate_the_minipopup_create_gud() throws Throwable {
+		shodetailpage.SignInPopUp.isDisplayed();
+		shodetailpage.SignInPopUpHeadderText.isDisplayed();
+		assertEquals("Like this Promo?", shodetailpage.SignInPopUpHeadderText.getText());
+		shodetailpage.SignInPopUpDescriptionText.isDisplayed();
+		assertEquals("Sign in now to rate this promo 'Gud'", shodetailpage.SignInPopUpDescriptionText.getText());
+		log.info("All minipopup elements are displaying");
+		shodetailpage.PopUpSignInButton.click();
+		driver.findElement(By.xpath("//h1")).isDisplayed();
+
+	}
+
+	@When("^Validate the minipopup follow button$")
+	public void validate_the_minipopup_follow_button() throws Throwable {
+		shodetailpage.SignInPopUp.isDisplayed();
+		shodetailpage.SignInPopUpHeadderText.isDisplayed();
+		assertEquals("Follow this Studio?", shodetailpage.SignInPopUpHeadderText.getText());
+		shodetailpage.SignInPopUpDescriptionText.isDisplayed();
+		assertEquals("Sign In to follow this studio & enter into the world of entertainment",
+				shodetailpage.SignInPopUpDescriptionText.getText());
+		log.info("All minipopup elements are displaying");
+		shodetailpage.PopUpSignInButton.click();
+		driver.findElement(By.xpath("//h1")).isDisplayed();
+
+	}
+
+	@And("^Search any sho (.+)$")
+	public void search_any_sho(String shoname) throws Throwable {
+		homepage.HomePageSearch(shoname);
+		wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+		shodetailpage.ShoNameonShoDetailPage.isDisplayed();
+		String shoName = driver
+				.findElement(
+						By.xpath("//body[@id='body']/app-root/div/app-sho-details/main/section/div/div[3]/h1/div/img"))
+				.getAttribute("alt");
+		log.info("Printing the sho name:" + shoName);
+		if (shoname.equalsIgnoreCase(shoName))
+			;
+
+	}
+
+	@When("^while playing click on greate gud button$")
+	public void while_playing_click_on_greate_gud_button() throws Throwable {
+		wait.until(ExpectedConditions.visibilityOfAllElements(videoplayer.PlayerGudICon));
+		videoplayer.PlayerGudICon.click();
+	}
+
+	@And("^From sho detail page click on any promo$")
+	public void from_sho_detail_page_click_on_any_promo() throws Throwable {
+		wait.until(ExpectedConditions.visibilityOfAllElements(shodetailpage.PromoCards));
+		shodetailpage.PromoCards.get(1).click();
+
+	}
+
+	@Then("^Validate Home page redirection$")
+	public void validate_home_page_redirection() throws Throwable {
+		driver.findElement(By.xpath("//h1")).isDisplayed();
+	}
+
+	@And("^From sho detail page click on Buy button$")
+	public void from_sho_detail_page_click_on_buy_button() throws Throwable {
+		shodetailpage.BuyButton.click();
+
+	}
+
+	@And("^From studio detail page click on follow button$")
+	public void from_studio_detail_page_click_on_follow_button() throws Throwable {
+		studiodetailpage.FollowButton.click();
+
+	}
 
 
 
