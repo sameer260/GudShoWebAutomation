@@ -26,7 +26,6 @@ Feature: Smoke Test cases
       | ShoName |
       | Talent  |
 
-
   ##Then Verify after payment <ShoName> is playing and close the player
   ## Paywall santhosh
   @Signup @test1
