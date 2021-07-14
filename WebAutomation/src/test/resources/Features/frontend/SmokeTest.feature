@@ -26,9 +26,6 @@ Feature: Smoke Test cases
       | ShoName |
       | Talent  |
 
-  ##Then Verify after payment <ShoName> is playing and close the player
-  ## Paywall santhosh
-  @Signup @paywall
   Scenario Outline: Add to watchlist mini popup validation
     Given Search any sho <shoname>
     And From sho detail page click on add to watchlist
@@ -38,7 +35,6 @@ Feature: Smoke Test cases
       | shoname |
       | avatar  |
 
-  @Signup 
   Scenario Outline: Create Gud mini popup validation
     Given Search any sho <shoname>
     And From sho detail page click on any promo
@@ -49,7 +45,6 @@ Feature: Smoke Test cases
       | shoname |
       | avatar  |
 
-  @Signup @test1
   Scenario Outline: Buy button redirection validation
     Given Search any sho <shoname>
     And From sho detail page click on Buy button
@@ -59,7 +54,6 @@ Feature: Smoke Test cases
       | shoname  |
       | hostages |
 
-  @Signup
   Scenario Outline: Follow Button mini popup validation
     Given Search any sho <shoname>
     And From studio detail page click on follow button
