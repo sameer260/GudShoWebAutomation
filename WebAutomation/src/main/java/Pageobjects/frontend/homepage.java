@@ -64,6 +64,24 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal']/app-gud-card/div")
 	public static List<WebElement> WatchlistCards;
 	
+	@FindBy(xpath="//span[contains(text(),'Notifications')]")
+	public static WebElement clicknotification;
+	
+	@FindBy(xpath="//a[@class='fill-profile']")
+	public static WebElement profileicon;
+	
+	@FindBy(xpath="//li[@contains(text(),'Account & Settings']")
+	public static WebElement accountsettings;
+	
+	@FindBy(xpath="//li[@contains(text(),'Friends']")
+	public static WebElement friends;
+	
+	@FindBy(xpath="//li[@contains(text(),'Support']")
+	public static WebElement support;
+	
+	@FindBy(xpath="//p[contains(text(),'Manage your Email, SMS, In-app and push notificati')]")
+	public static WebElement notificationtext;
+	
 	public static void HomePageSearch(String shoseriesorstudioname) throws InterruptedException {
 		
 		homepage.CookieClose.click();

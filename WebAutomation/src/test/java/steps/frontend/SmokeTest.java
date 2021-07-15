@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,6 +35,7 @@ public class SmokeTest extends BaseSetup {
 	videoplayer video = new videoplayer();
 	studiodetailpage studio = new studiodetailpage();
 	WebDriverWait wait = new WebDriverWait(driver, 30);
+   	JavascriptExecutor executor = (JavascriptExecutor)driver;
 
 	@Given("^Search any (.+) and verfiy its redirected to correct page$")
 	public void search_any_and_verfiy_its_redirected_to_correct_page(String shoname) throws Throwable {
@@ -149,7 +152,7 @@ public class SmokeTest extends BaseSetup {
 
 	@When("^verfiy promo player$")
     public void verfiy_promo_player() throws Throwable {
-		commonlocatorsandmethods.scrolldownm();
+//		commonlocatorsandmethods.scrolldownm();
 
 //		wait.until(ExpectedConditions.visibilityOf(studiodetailpage.trendingpromos)).click();
 
@@ -168,12 +171,20 @@ public class SmokeTest extends BaseSetup {
 
 
 	}
+	
+	
 
 	@When("^click sho card and verify its redirected sho detail page$")
     public void click_sho_card_and_verify_its_redirected_sho_detail_page() throws Throwable {
-		commonlocatorsandmethods.scrolldownm();
+//		commonlocatorsandmethods.scrolldownm();
     	Thread.sleep(8000);
 		wait.until(ExpectedConditions.visibilityOf(studiodetailpage.shocard1)).click();
+         Actions a=new Actions(driver);
+         a.moveToElement(studiodetailpage.selectshonameonshocard).build().perform();
+         Thread.sleep(2000);
+		String actualsho=studiodetailpage.selectshonameonshocard.getText();
+		String expectedsho=shodetailpage.ShoNameonShoDetailPage.getText();
+		assertEquals(actualsho,expectedsho);
 		Thread.sleep(8000);
 		}
 
@@ -185,4 +196,51 @@ public class SmokeTest extends BaseSetup {
       Thread.sleep(3000);
 	}
 
+//	@Given("^verify notification tab$")
+//    public void verify_notification_tab() throws Throwable {
+//		
+//    	wait.until(ExpectedConditions.visibilityOf((WebElement) homepage.HeaderLogo)).click(); 
+//    	}
+
+    
+
+	@Given("^verify notification tab$")
+    public void verify_notification_tab() throws Throwable {
+//		ToastandErrormessages.ToastMessageText.click();
+//		Thread.sleep(2000);
+//		ToastandErrormessages.ToastMessageClose.click();
+		Thread.sleep(2000);
+//    	homepage.clicknotification.click();
+//		WebElement element = driver.findElement(By.id("gbqfd"));
+		WebElement notify=wait.until(ExpectedConditions.elementToBeClickable(homepage.clicknotification));
+   	executor.executeScript("arguments[0].click();", notify);
+    	Thread.sleep(2000);
+    	}
+	@Then("^verify notification page redirected to correct page$")
+    public void verify_notification_page_redirected_to_correct_page() throws Throwable {
+		
+		homepage.notificationtext.isDisplayed();
+		
+		}
+	
+
+    @Given("^verify user profile icon$")
+    public void verify_user_profile_icon() throws Throwable {
+    	Thread.sleep(3000);
+    	WebElement picon=wait.until(ExpectedConditions.elementToBeClickable(homepage.profileicon));
+    	homepage.profileicon.click();
+    	executor.executeScript("arguments[0].click();", picon);
+    }
+    @Then("^verify profile icon page$")
+    public void verify_profile_icon_page() throws Throwable {
+    	homepage.accountsettings.isDisplayed();
+    	homepage.friends.isDisplayed();
+    	homepage.support.isDisplayed();
+    }
 }
+
+
+
+	
+	
+

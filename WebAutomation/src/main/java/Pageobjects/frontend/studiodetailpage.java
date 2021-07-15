@@ -77,6 +77,9 @@ public class studiodetailpage extends BaseSetup {
 	@FindBy(xpath="//body/app-root[1]/div[1]/app-gud-studios[1]/div[1]/div[1]/div[3]/div[1]/app-gud-card[1]/div[1]/div[1]/div[1]")
 	public static WebElement selectshocardfromgenre;
 	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal']/app-gud-card/div/div/div")
+	public static WebElement selectshonameonshocard;
+	
 	public static void BannerImageClick(String shoname) throws InterruptedException
 	{
 		 Actions a =new Actions(driver);

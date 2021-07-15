@@ -44,7 +44,7 @@ Feature: Smoke Test cases
       | StudioName   |
       | Trail Studio |
 
-  @ramya
+  
   Scenario Outline: Search any Studio and play promo  and close promo player and check its redirection
     Given Search any <StudioName> and verify its redirected studio page
     When verfiy promo player
@@ -54,7 +54,7 @@ Feature: Smoke Test cases
       | StudioName   |
       | Trail Studio|
 
-  @ramya
+  
   Scenario Outline: Search any Studio and click sho card
     Given Search any <StudioName> and verify its redirected studio page
     When click sho card and verify its redirected sho detail page
@@ -63,7 +63,7 @@ Feature: Smoke Test cases
       | StudioName   |
       | Trail Studio|
 
- @ramya
+ 
   Scenario Outline: Search any Studio and select any genre and verify sho card
     Given Search any <StudioName> and verify its redirected studio page
     When click genre and verify sho card redirection
@@ -71,6 +71,21 @@ Feature: Smoke Test cases
     Examples: 
       | StudioName   |
       | Trail Studio|
+      
+    @ramya 
+    Scenario: notification scenario
+    Given verify notification tab
+    Then verify notification page redirected to correct page
+  
+    
+   @ramya
+   Scenario: user profile icon
+    Given verify user profile icon
+    Then verify profile icon page 
+    
+    
+   
+      
       
       
       ##Then Verify after payment <ShoName> is playing and close the player 
