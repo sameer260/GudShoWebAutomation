@@ -48,23 +48,10 @@ public class SmokeTest extends BaseSetup{
 	@When("^Buy the sho using (.+) with (.+)$")
 	public void buy_the_sho_using_with(String paymentmode, String paymentscenario) throws Throwable {
 		shodetailpage.BuyButton.click();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOf(paymentpage.PopupContinueButton));
 		paymentpage.PopupContinueButton.click();
-		Thread.sleep(2000);
-		driver.switchTo().frame(paymentpage.RozarPayFrame);
-		paymentpage.SelectPaymentMode(paymentmode);
-		/*if(paymentgateway.equalsIgnoreCase("Razorpay"))
-		{
-			paymentpage.RazorpaypaymentScenario(paymentscenario);
-		}
-		else if(paymentgateway.equalsIgnoreCase("Paytm"))
-		{
-			paymentpage.PaytmPaymentScenario(paymentscenario);
-		}
-		else if(paymentgateway.equalsIgnoreCase("UPI"))
-		{
-			Thread.sleep(5000);
-		}*/
+	    paymentpage.switchframe(paymentscenario, paymentmode);
+		
     }
 
     @Then("^Verify after payment (.+) is playing and close the player$")
@@ -176,7 +163,10 @@ public class SmokeTest extends BaseSetup{
         assertEquals(ShonameInContinueWatching,shoname);
     }
 
-    
+    @Then("^Share studio with all share icons$")
+    public void share_studio_with_all_share_icons() throws Throwable {
+        ShareFeature.Studioshare();
+    }
 
 	 
     
@@ -249,18 +239,13 @@ public class SmokeTest extends BaseSetup{
 
 	}
 
-	@And("^Search any sho (.+)$")
-	public void search_any_sho(String shoname) throws Throwable {
-		homepage.HomePageSearch(shoname);
-		wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
-		shodetailpage.ShoNameonShoDetailPage.isDisplayed();
-		String shoName = driver
-				.findElement(
-						By.xpath("//body[@id='body']/app-root/div/app-sho-details/main/section/div/div[3]/h1/div/img"))
-				.getAttribute("alt");
-		log.info("Printing the sho name:" + shoName);
-		if (shoname.equalsIgnoreCase(shoName))
-			;
+	@Given("^Search any studio (.+) and verify it should redirected to correct page$")
+    public void search_any_studio_and_verify_it_should_redirected_to_correct_page(String studioname) throws Throwable {
+		homepage.HomePageSearch(studioname);
+		wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+		String studionameinstudiodetailpage = studiodetailpage.StudioNameInStudioPage.getText();
+		log.info(studionameinstudiodetailpage);
+		assertEquals(studionameinstudiodetailpage,studioname);
 
 	}
 

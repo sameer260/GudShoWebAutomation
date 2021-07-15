@@ -50,6 +50,8 @@ public class studiodetailpage extends BaseSetup {
 	public static WebElement PlayTrailerButton;
 	
 	
+	
+	
 	public static void BannerImageClick(String shoname) throws InterruptedException
 	{
 		 Actions a =new Actions(driver);
@@ -57,11 +59,9 @@ public class studiodetailpage extends BaseSetup {
 		  {
 			  a.moveToElement(studiodetailpage.NextSliderButton).click().build().perform();  
 		  }
-		 Thread.sleep(1000);
-		 
-		
-		 
+		 Thread.sleep(1000); 
 	}
+	
 	
 
 }
