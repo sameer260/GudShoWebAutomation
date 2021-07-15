@@ -1,4 +1,4 @@
-Feature: Smoke Test cases
+Feature: sho detail page scenarios
 
   Scenario Outline: Search any sho and buy this sho and Play
     Given Search any <ShoName> and verfiy its redirected to correct page
@@ -7,9 +7,17 @@ Feature: Smoke Test cases
 
     Examples: 
       | ShoName          | PaymentMode | PaymentScenario |
-      | The Walking Dead | Card        | Success         |
+      | Talent           | Card        | Success         |
        
+  Scenario Outline: Search any Sho and Play Promo and Like
+    Given Search any <ShoName> and verfiy its redirected to correct page
+    When Play <PromoName> and like promo
+    Then On home page check liked <PromoName> is showing in my gud promos
 
+    Examples: 
+      | ShoName | PromoName                     |
+      | Talent  | Vakeel Sab Theatrical Trailer |
+      
   Scenario Outline: Search any sho and add in to watch list
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Add <ShoName> in to watchlist and check the toaster message
@@ -28,15 +36,7 @@ Feature: Smoke Test cases
       | ShoName | ShareType  |
       | Talent  | shoshare   |
 
-  Scenario Outline: Search any Sho and Play Promo and Like
-    Given Search any <ShoName> and verfiy its redirected to correct page
-    When Play <PromoName> and like promo
-    Then On home page check liked <PromoName> is showing in my gud promos
-
-    Examples: 
-      | ShoName | PromoName                     |
-      | Talent  | Vakeel Sab Theatrical Trailer |
-
+  
   Scenario Outline: Search any Sho and Share promo
     Given Search any <ShoName> and verfiy its redirected to correct page
     Then Hover on <PromoName> card and share promo <ShareType> using all shares
@@ -63,13 +63,7 @@ Feature: Smoke Test cases
       | Paytm   |
       
       
-   Scenario Outline: Search any Studio and share studio
-      Given Search any studio <studioname> and verify it should redirected to correct page
-      Then Share studio with all share icons
-      
-      Examples:
-      |studioname|
-      |Sameer    | 
+  
       
       
     

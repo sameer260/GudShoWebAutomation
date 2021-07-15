@@ -24,7 +24,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
-public class SmokeTest extends BaseSetup{
+public class shodetailpagesteps extends BaseSetup{
 	homepage home=new homepage();
 	shodetailpage detailpage=new shodetailpage();
 	paymentpage payment=new paymentpage();
@@ -32,18 +32,11 @@ public class SmokeTest extends BaseSetup{
 	commonlocatorsandmethods cm=new commonlocatorsandmethods();
 	ShareFeature share=new ShareFeature();
 	studiodetailpage studio=new studiodetailpage();
-	public static Logger log=Logger.getLogger(SmokeTest.class.getName());
+	public static Logger log=Logger.getLogger(shodetailpagesteps.class.getName());
 	videoplayer video=new videoplayer();
 	WebDriverWait wait=new WebDriverWait(driver,30);
 	
-	@Given("^Search any (.+) and verfiy its redirected to correct page$")
-	public void search_any_and_verfiy_its_redirected_to_correct_page(String shoname) throws Throwable {
-		homepage.HomePageSearch(shoname);
-		wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
-		String shonameonshodetailpage = shodetailpage.ShoNameonShoDetailPage.getText();
-		log.info(shonameonshodetailpage);
-		assertEquals(shonameonshodetailpage, shoname);
-	}
+	
 
 	@When("^Buy the sho using (.+) with (.+)$")
 	public void buy_the_sho_using_with(String paymentmode, String paymentscenario) throws Throwable {
@@ -163,10 +156,7 @@ public class SmokeTest extends BaseSetup{
         assertEquals(ShonameInContinueWatching,shoname);
     }
 
-    @Then("^Share studio with all share icons$")
-    public void share_studio_with_all_share_icons() throws Throwable {
-        ShareFeature.Studioshare();
-    }
+   
 
 	 
     
@@ -178,106 +168,10 @@ public class SmokeTest extends BaseSetup{
     
     
     
-    
-    /*
-	 * Paywall scripting for sanity by santhosh
-	 */
+   
+	
 
-	@Given("^Open the Chrome and launch the application$")
-	public void open_the_chrome_and_launch_the_application() throws Throwable {
-		BaseSetup.intiliazedriver();
-		log.info("Browser and App launched");
-
-	}
-
-	@When("^From sho detail page click on add to watchlist$")
-	public void from_sho_detail_page_click_on_add_to_watchlist() throws Throwable {
-		wait.until(ExpectedConditions.visibilityOf(shodetailpage.WatchListButton));
-		log.info("Clicking on the add to watchlist button");
-		shodetailpage.WatchListButton.click();
-
-	}
-
-	@When("^Validate the minipopup add to watchlist$")
-	public void validate_the_minipopup_add_to_watchlist() throws Throwable {
-		shodetailpage.SignInPopUp.isDisplayed();
-		shodetailpage.SignInPopUpHeadderText.isDisplayed();
-		assertEquals("Want to save & watch later?", shodetailpage.SignInPopUpHeadderText.getText());
-		shodetailpage.SignInPopUpDescriptionText.isDisplayed();
-		assertEquals("Sign In to save this video & watch again later",
-				shodetailpage.SignInPopUpDescriptionText.getText());
-		log.info("All minipopup elements are displaying");
-		shodetailpage.PopUpSignInButton.click();
-		driver.findElement(By.xpath("//h1")).isDisplayed();
-
-	}
-
-	@Then("^Validate the minipopup Create gud$")
-	public void validate_the_minipopup_create_gud() throws Throwable {
-		shodetailpage.SignInPopUp.isDisplayed();
-		shodetailpage.SignInPopUpHeadderText.isDisplayed();
-		assertEquals("Like this Promo?", shodetailpage.SignInPopUpHeadderText.getText());
-		shodetailpage.SignInPopUpDescriptionText.isDisplayed();
-		assertEquals("Sign in now to rate this promo 'Gud'", shodetailpage.SignInPopUpDescriptionText.getText());
-		log.info("All minipopup elements are displaying");
-		shodetailpage.PopUpSignInButton.click();
-		driver.findElement(By.xpath("//h1")).isDisplayed();
-
-	}
-
-	@When("^Validate the minipopup follow button$")
-	public void validate_the_minipopup_follow_button() throws Throwable {
-		shodetailpage.SignInPopUp.isDisplayed();
-		shodetailpage.SignInPopUpHeadderText.isDisplayed();
-		assertEquals("Follow this Studio?", shodetailpage.SignInPopUpHeadderText.getText());
-		shodetailpage.SignInPopUpDescriptionText.isDisplayed();
-		assertEquals("Sign In to follow this studio & enter into the world of entertainment",
-				shodetailpage.SignInPopUpDescriptionText.getText());
-		log.info("All minipopup elements are displaying");
-		shodetailpage.PopUpSignInButton.click();
-		driver.findElement(By.xpath("//h1")).isDisplayed();
-
-	}
-
-	@Given("^Search any studio (.+) and verify it should redirected to correct page$")
-    public void search_any_studio_and_verify_it_should_redirected_to_correct_page(String studioname) throws Throwable {
-		homepage.HomePageSearch(studioname);
-		wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
-		String studionameinstudiodetailpage = studiodetailpage.StudioNameInStudioPage.getText();
-		log.info(studionameinstudiodetailpage);
-		assertEquals(studionameinstudiodetailpage,studioname);
-
-	}
-
-	@When("^while playing click on greate gud button$")
-	public void while_playing_click_on_greate_gud_button() throws Throwable {
-		wait.until(ExpectedConditions.visibilityOfAllElements(videoplayer.PlayerGudICon));
-		videoplayer.PlayerGudICon.click();
-	}
-
-	@And("^From sho detail page click on any promo$")
-	public void from_sho_detail_page_click_on_any_promo() throws Throwable {
-		wait.until(ExpectedConditions.visibilityOfAllElements(shodetailpage.PromoCards));
-		shodetailpage.PromoCards.get(1).click();
-
-	}
-
-	@Then("^Validate Home page redirection$")
-	public void validate_home_page_redirection() throws Throwable {
-		driver.findElement(By.xpath("//h1")).isDisplayed();
-	}
-
-	@And("^From sho detail page click on Buy button$")
-	public void from_sho_detail_page_click_on_buy_button() throws Throwable {
-		shodetailpage.BuyButton.click();
-
-	}
-
-	@And("^From studio detail page click on follow button$")
-	public void from_studio_detail_page_click_on_follow_button() throws Throwable {
-		studiodetailpage.FollowButton.click();
-
-	}
+	
 
 
 

@@ -1,4 +1,4 @@
-@Paywall
+@paywall
 Feature: Paywall Scenarios
 
     
@@ -8,8 +8,8 @@ Feature: Paywall Scenarios
     When Validate the minipopup add to watchlist
 
     Examples: 
-      | shoname |
-      | avatar  |
+      | ShoName |
+      | Talent  |
       
    
   Scenario Outline: Create Gud mini popup validation
@@ -19,8 +19,8 @@ Feature: Paywall Scenarios
     Then Validate the minipopup Create gud
 
     Examples: 
-      | shoname |
-      | avatar  |
+      | ShoName |
+      | Talent  |
       
   
   Scenario Outline: Buy button redirection validation
@@ -29,8 +29,8 @@ Feature: Paywall Scenarios
     Then Validate Home page redirection
 
     Examples: 
-      | shoname  |
-      | hostages |
+      | ShoName  |
+      | Talent   |
       
     
   Scenario Outline: Follow Button mini popup validation

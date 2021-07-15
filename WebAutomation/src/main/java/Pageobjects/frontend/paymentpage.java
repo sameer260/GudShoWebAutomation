@@ -173,6 +173,7 @@ public class paymentpage extends BaseSetup {
 		WebDriverWait wait=new WebDriverWait(driver,20);
 	    driver.switchTo().frame(RozarPayFrame);
 		SelectPaymentMode(PaymentMode);
+		driver.switchTo().defaultContent();
 		if(PaymentMode.equalsIgnoreCase("UPI"))
 		{
 			Thread.sleep(5000);
