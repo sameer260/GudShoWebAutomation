@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Pageobjects.frontend.ShareFeature;
@@ -50,5 +51,57 @@ public class studiodetailpagesteps  extends BaseSetup{
 	        assertEquals(shotrailer,Shonameonplayer);
 	        
 	    }
+	 
+	 
+	 //Ramya Code
+	 
+	 @When("^Click on Follow button$")
+		public void click_on_follow_button() throws Throwable {
+			studiodetailpage.FollowButton.click();
+		}
+
+		@Then("^check  toaster message and verify following text$")
+		public void check_toaster_message_and_verify_following_text() throws Throwable {
+			wait.until(ExpectedConditions.visibilityOf(ToastandErrormessages.ToastMessageText));
+			String followtext = ToastandErrormessages.ToastMessageText.getText();
+			assertEquals(followtext, "You have started following this studio");
+			log.info("the toaster message is: " + followtext);
+			ToastandErrormessages.ToastMessageClose.click();
+		}
+
+		@When("^verfiy promo player$")
+	    public void verfiy_promo_player() throws Throwable {
+			studiodetailpage.clickpromo.click();
+			Thread.sleep(7000);
+		}
+
+		@Then("^close player$")
+		public void close_player() throws Throwable {
+			videoplayer.CloseButton.click();
+
+		}
+		
+		
+
+		@When("^click sho card and verify its redirected sho detail page$")
+	    public void click_sho_card_and_verify_its_redirected_sho_detail_page() throws Throwable {
+			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.shocard1)).click();
+	         Actions a=new Actions(driver);
+	         a.moveToElement(studiodetailpage.selectshonameonshocard).build().perform();
+	         Thread.sleep(2000);
+			String actualsho=studiodetailpage.selectshonameonshocard.getText();
+			log.info(actualsho);
+			String expectedsho=shodetailpage.ShoNameonShoDetailPage.getText();
+			log.info(expectedsho);
+			assertEquals(actualsho,expectedsho);
+			
+			}
+
+		@When("^click genre and verify sho card redirection$")
+	    public void click_genre_and_verify_sho_card_redirection() throws Throwable {
+			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.selectgenre)).click();
+			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.selectshocardfromgenre)).click();
+	      
+		}
 
 }

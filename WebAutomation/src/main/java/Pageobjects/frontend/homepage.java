@@ -76,6 +76,24 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='home-slider continue ng-star-inserted']/app-gud-slider/div/div[2]/swiper/div/app-gud-card/div/div/div[2]")
 	public static List<WebElement> ShoNamesInContinueWatching;
 	
+	@FindBy(xpath="//span[contains(text(),'Notifications')]")
+	public static WebElement clicknotification;
+	
+	@FindBy(xpath="//a[@class='fill-profile']")
+	public static WebElement profileicon;
+	
+	@FindBy(xpath="//li[@contains(text(),'Account & Settings']")
+	public static WebElement accountsettings;
+	
+	@FindBy(xpath="//li[@contains(text(),'Friends']")
+	public static WebElement friends;
+	
+	@FindBy(xpath="//li[@contains(text(),'Support']")
+	public static WebElement support;
+	
+	@FindBy(xpath="//p[contains(text(),'Manage your Email, SMS, In-app and push notificati')]")
+	public static WebElement notificationtext;
+	
 	
 	
 	static By MyGudPromoCards=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div");
