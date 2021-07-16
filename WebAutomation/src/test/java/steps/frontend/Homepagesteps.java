@@ -63,27 +63,49 @@ public class Homepagesteps extends BaseSetup {
 	    	assertTrue(homepage.ProfileUserName.isDisplayed());
 	    	assertTrue(homepage.Headderprofileicon.isDisplayed());
 	    }
+	    
+
 	    @Given("^Click on sho card from any row and verify its redirected to correct sho detail page$")
-	    public void click_on_sho_card_from_any_row_and_verify_its_redirected_to_correct_sho_detail_page() throws Throwable {
-	        Actions a =new Actions(driver);
-	        a.moveToElement(homepage.MultipleRowShocards.get(0)).build().perform();
-	        wait.until(ExpectedConditions.visibilityOf(homepage.MultipleRowShoNamesonShocards.get(0)));
-	    	String shonameoncard=homepage.MultipleRowShoNamesonShocards.get(0).getText();
-	    	homepage.MultipleRowShocards.get(0).click();
-	    	wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
-	        String shoname=shodetailpage.ShoNameonShoDetailPage.getText();
-	        assertEquals(shoname,shonameoncard);
-	    }
-	    @Given("^Click on studio card from studio row and verify its redirected to correct studio detail page$")
-	    public void click_on_studio_card_from_studio_row_and_verify_its_redirected_to_correct_studio_detail_page() throws Throwable {
-	    	commonlocatorsandmethods.scrolldownm();
-	    	String studionameoncard=homepage.RowStudioNameonCard.get(0).getText();
-	    	homepage.StudioCards.get(0).click();
-	    	wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
-	        String studioname=studiodetailpage.StudioNameInStudioPage.getText();
-	        assertEquals(studioname,studionameoncard);
+	   	    public void click_on_sho_card_from_any_row_and_verify_its_redirected_to_correct_sho_detail_page() throws Throwable {
+	   	        Actions a =new Actions(driver);
+	   	        a.moveToElement(homepage.MultipleRowShocards.get(0)).build().perform();
+	   	        wait.until(ExpectedConditions.visibilityOf(homepage.MultipleRowShoNamesonShocards.get(0)));
+	   	    	String shonameoncard=homepage.MultipleRowShoNamesonShocards.get(0).getText();
+	   	    	homepage.MultipleRowShocards.get(0).click();
+	   	    	wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+	   	        String shoname=shodetailpage.ShoNameonShoDetailPage.getText();
+	   	        assertEquals(shoname,shonameoncard);
+	   	    }
+	   	    @Given("^Click on studio card from studio row and verify its redirected to correct studio detail page$")
+	   	    public void click_on_studio_card_from_studio_row_and_verify_its_redirected_to_correct_studio_detail_page() throws Throwable {
+	   	    	commonlocatorsandmethods.scrolldownm();
+	   	    	String studionameoncard=homepage.RowStudioNameonCard.get(0).getText();
+	   	    	homepage.StudioCards.get(0).click();
+	   	    	wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+	   	        String studioname=studiodetailpage.StudioNameInStudioPage.getText();
+	   	        assertEquals(studioname,studionameoncard);
+	   	    }
+
+	    String bannerShoName;
+	    
+	    @Given("^Select fist card from home banner$")
+	    public void select_fist_card_from_home_banner() throws Throwable {
+	    	Actions a = new Actions(driver);
+	    	wait.until(ExpectedConditions.visibilityOfAllElements(homepage.allBanners));
+	    	String bannerShoName = homepage.allBanners.get(1).getText();
+	    	log.info("Redirecting to this sho: "+bannerShoName);
+	    	a.moveToElement(homepage.allBanners.get(1)).build().perform();
+	    	Thread.sleep(3000);
+	    	homepage.allBanners.get(1).click();
+	      
 	    }
 
-	   
+	    @Then("^verify redirection of home banner$")
+	    public void verify_redirection_of_home_banner() throws Throwable {
+	    	String shoName = shodetailpage.ShoNameonShoDetailPage.getAttribute("alt");
+	    	assertTrue(shoName.equalsIgnoreCase(bannerShoName));
+	        
+	    }
+
 
 }
