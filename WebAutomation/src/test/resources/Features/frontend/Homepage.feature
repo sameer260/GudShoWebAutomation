@@ -13,4 +13,4 @@
      
     Scenario: Checking the redirection of studio card from the row
      Given Click on studio card from studio row and verify its redirected to correct studio detail page
-     
+     When add
