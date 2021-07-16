@@ -31,6 +31,10 @@ public class homepage extends BaseSetup {
 	public
 	static List<WebElement> HomePageBannerSliderButtons;
 	
+	@FindBy(xpath="//ul[@id='banner-lists']//child::li//div[2]")
+	public
+	static List<WebElement> allBanners;
+	
 	@FindBy(xpath="//h3[@class='ng-star-inserted']")
 	public
 	static List<WebElement> ShoNamesOnBannerText;
@@ -106,32 +110,10 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='user-detail-list']/ngx-avatar")
 	public static WebElement HoverProfileIcon;
 	
-	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow']/app-gud-card/div")
-	public static List<WebElement> MultipleRowShocards;
 	
-    @FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal']/app-gud-card/div")
-    public static List<WebElement> SingleRowShoCards; 
-    
-    @FindBy(xpath="//div[@class='home-slider studios-swiper ng-star-inserted']/app-gud-slider/div/div[2]/swiper/div/app-gud-card/div")
-    public static List<WebElement> StudioCards;
-    
-    @FindBy(xpath="//div[@class='home-slider studios-swiper ng-star-inserted']/app-gud-slider/div/div[2]/swiper/div/app-gud-card/div/div/div/div[2]/div/a/h6")
-    public static List<WebElement> RowStudioNameonCard;
-    
-    @FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow']/app-gud-card/div/div/div[2]/div/div/h5")
-    public static List<WebElement> MultipleRowShoNamesonShocards;
 	
 	static By MyGudPromoCards=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div");
 	static By PromoNameonGudPromos=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div/div/div[2]/h4");
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
