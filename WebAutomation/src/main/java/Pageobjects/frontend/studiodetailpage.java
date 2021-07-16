@@ -61,8 +61,8 @@ public class studiodetailpage extends BaseSetup {
 	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal']/app-gud-card/div/div/div")
 	public static WebElement selectshonameonshocard;
 	
-	@FindBy(xpath="//li[contains(text(),'Drama')]")
-	public static WebElement selectgenre;
+	@FindBy(xpath="//ul[@class='swiper-wrapper choose-genre']/li")
+	public static List<WebElement> selectgenre;
 	
 	
 
@@ -73,6 +73,9 @@ public class studiodetailpage extends BaseSetup {
 
 	@FindBy(xpath="//*[@class='swiper-container swiper-container-initialized swiper-container-horizontal']//following::a[1]//child::img")
 	public static WebElement selectshonamefromstudiopage;
+	
+	@FindBy(xpath="//*[@class='genre-main ng-star-inserted']//following::a[1]//child::img")
+	public static WebElement ShonameofcardsonGeners;
 	
 	
 	public static String BannerImageClick(String shoname) throws InterruptedException

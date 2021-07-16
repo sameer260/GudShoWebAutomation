@@ -83,10 +83,23 @@ public class studiodetailpagesteps  extends BaseSetup{
 
 		
 
-		@When("^click genre and verify sho card redirection$")
-	    public void click_genre_and_verify_sho_card_redirection() throws Throwable {
-			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.selectgenre)).click();
-			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.selectshocardfromgenre)).click();
+		 @When("^click (.+) and verify sho card redirection$")
+		    public void click_and_verify_sho_card_redirection(String genere) throws Throwable {
+			 Actions a=new Actions(driver);
+			 for(int i=0;i<studiodetailpage.selectgenre.size();i++)
+			 {
+				 if(studiodetailpage.selectgenre.get(i).getText().equalsIgnoreCase(genere))
+				 {
+					 studiodetailpage.selectgenre.get(i).click();
+				 }
+			 }
+			 WebElement shocard11=wait.until(ExpectedConditions.elementToBeClickable(studiodetailpage.selectshocardfromgenre));
+			String actualsho=studiodetailpage.ShonameofcardsonGeners.getAttribute("alt");
+			log.info(actualsho);
+			studiodetailpage.selectshocardfromgenre.click();
+			String expectedsho=shodetailpage.ShoNameonShoDetailPage.getText();
+			log.info(expectedsho);
+			assertTrue(actualsho.equalsIgnoreCase(expectedsho));
 	      
 		}
 		@When("^verfiy promo player$")
@@ -103,10 +116,6 @@ public class studiodetailpagesteps  extends BaseSetup{
 		assertEquals(actualpromotext,Expectedpromotext);
 
 		}
-
-		
-
-
 
 		@When("^click sho card and verify its redirected sho detail page$")
 		   public void click_sho_card_and_verify_its_redirected_sho_detail_page() throws Throwable {
