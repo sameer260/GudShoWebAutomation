@@ -1,8 +1,10 @@
 package steps.frontend;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -69,11 +71,7 @@ public class studiodetailpagesteps  extends BaseSetup{
 			ToastandErrormessages.ToastMessageClose.click();
 		}
 
-		@When("^verfiy promo player$")
-	    public void verfiy_promo_player() throws Throwable {
-			studiodetailpage.clickpromo.click();
-			Thread.sleep(7000);
-		}
+		
 
 		@Then("^close player$")
 		public void close_player() throws Throwable {
@@ -83,25 +81,47 @@ public class studiodetailpagesteps  extends BaseSetup{
 		
 		
 
-		@When("^click sho card and verify its redirected sho detail page$")
-	    public void click_sho_card_and_verify_its_redirected_sho_detail_page() throws Throwable {
-			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.shocard1)).click();
-	         Actions a=new Actions(driver);
-	         a.moveToElement(studiodetailpage.selectshonameonshocard).build().perform();
-	         Thread.sleep(2000);
-			String actualsho=studiodetailpage.selectshonameonshocard.getText();
-			log.info(actualsho);
-			String expectedsho=shodetailpage.ShoNameonShoDetailPage.getText();
-			log.info(expectedsho);
-			assertEquals(actualsho,expectedsho);
-			
-			}
+		
 
 		@When("^click genre and verify sho card redirection$")
 	    public void click_genre_and_verify_sho_card_redirection() throws Throwable {
 			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.selectgenre)).click();
 			wait.until(ExpectedConditions.visibilityOf(studiodetailpage.selectshocardfromgenre)).click();
 	      
+		}
+		@When("^verfiy promo player$")
+		   public void verfiy_promo_player() throws Throwable {
+		String actualpromotext= studiodetailpage.verifypromonameonstudiopage.getText();
+		       log.info(actualpromotext);
+		       wait.until(ExpectedConditions.visibilityOf(studiodetailpage.clickpromo));
+		       studiodetailpage.clickpromo.click();
+		       Thread.sleep(1000);
+		       Actions a=new Actions(driver);
+		       a.moveToElement(videoplayer.HoverOnPlayer).build().perform();
+		String Expectedpromotext=videoplayer.Promoname();
+		       log.info(Expectedpromotext);
+		assertEquals(actualpromotext,Expectedpromotext);
+
+		}
+
+		
+
+
+
+		@When("^click sho card and verify its redirected sho detail page$")
+		   public void click_sho_card_and_verify_its_redirected_sho_detail_page() throws Throwable {
+		commonlocatorsandmethods.scrolldownm();
+		Actions a=new Actions(driver);
+		WebElement shocard11=wait.until(ExpectedConditions.elementToBeClickable(studiodetailpage.shocard1));
+		a.moveToElement(studiodetailpage.shocard1).build().perform();
+		String actualsho=studiodetailpage.selectshonamefromstudiopage.getAttribute("alt");
+		log.info(actualsho);
+		a.moveToElement(studiodetailpage.selectshonamefromstudiopage).build().perform();
+		studiodetailpage.shocard1.click();
+		String expectedsho=shodetailpage.ShoNameonShoDetailPage.getText();
+		log.info(expectedsho);
+		assertTrue(actualsho.equalsIgnoreCase(expectedsho));
+
 		}
 
 }

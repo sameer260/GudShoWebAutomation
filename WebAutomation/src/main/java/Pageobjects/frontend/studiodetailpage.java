@@ -65,6 +65,16 @@ public class studiodetailpage extends BaseSetup {
 	public static WebElement selectgenre;
 	
 	
+
+	
+
+	@FindBy(xpath="//body/app-root[1]/div[1]/app-gud-studios[1]/div[1]/div[1]/div[3]/app-gud-slider[1]/div[1]/div[2]/swiper[1]/div[1]/app-gud-card[1]/div[1]/div[1]/div[2]/h4[1]")
+	public static WebElement verifypromonameonstudiopage;
+
+	@FindBy(xpath="//*[@class='swiper-container swiper-container-initialized swiper-container-horizontal']//following::a[1]//child::img")
+	public static WebElement selectshonamefromstudiopage;
+	
+	
 	public static String BannerImageClick(String shoname) throws InterruptedException
 	{
 		 Actions a =new Actions(driver);
