@@ -24,5 +24,5 @@
     Then verify redirection of home banner
     
     
-    ##santho
+   
 
