@@ -106,10 +106,23 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//div[@class='user-detail-list']/ngx-avatar")
 	public static WebElement HoverProfileIcon;
 	
+	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow']/app-gud-card/div")
+	public static List<WebElement> MultipleRowShocards;
 	
+    @FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal']/app-gud-card/div")
+    public static List<WebElement> SingleRowShoCards; 
 	
 	static By MyGudPromoCards=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div");
 	static By PromoNameonGudPromos=By.xpath("//app-gud-shocial[@class='ng-star-inserted']/div/div/app-gud-slider[1]/div/div[2]/swiper/div/app-gud-card/div/div/div[2]/h4");
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

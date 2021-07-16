@@ -3,7 +3,7 @@ Feature: Paywall Scenarios
 
     
   Scenario Outline: Add to watchlist mini popup validation
-     Given Search any <ShoName> and verfiy its redirected to correct page
+    Given Search any <ShoName> and verfiy its redirected to correct page
     And From sho detail page click on add to watchlist
     When Validate the minipopup add to watchlist
 
