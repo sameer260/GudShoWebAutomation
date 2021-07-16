@@ -1,7 +1,7 @@
 @paywall
 Feature: Paywall Scenarios
 
-    
+   
   Scenario Outline: Add to watchlist mini popup validation
      Given Search any <ShoName> and verfiy its redirected to correct page
     And From sho detail page click on add to watchlist
@@ -11,7 +11,7 @@ Feature: Paywall Scenarios
       | ShoName |
       | Talent  |
       
-   
+
   Scenario Outline: Create Gud mini popup validation
      Given Search any <ShoName> and verfiy its redirected to correct page
     And From sho detail page click on any promo
@@ -22,7 +22,7 @@ Feature: Paywall Scenarios
       | ShoName |
       | Talent  |
       
-  
+    
   Scenario Outline: Buy button redirection validation
      Given Search any <ShoName> and verfiy its redirected to correct page
     And From sho detail page click on Buy button
@@ -32,7 +32,7 @@ Feature: Paywall Scenarios
       | ShoName  |
       | Talent   |
       
-    
+   
   Scenario Outline: Follow Button mini popup validation
     Given Search any studio <studioname> and verify it should redirected to correct page
     And From studio detail page click on follow button
