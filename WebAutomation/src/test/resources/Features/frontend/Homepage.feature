@@ -22,4 +22,7 @@
      Scenario: Click on home banner and verify redirects
     Given Select fist card from home banner
     Then verify redirection of home banner
+    
+    
+    santho
 
