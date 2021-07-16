@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Pageobjects.frontend.SignUp;
 import Pageobjects.frontend.ToastandErrormessages;
 import Pageobjects.frontend.audioplayer;
+import Pageobjects.frontend.commonlocatorsandmethods;
 import Pageobjects.frontend.homepage;
 import Pageobjects.frontend.shodetailpage;
 import Pageobjects.frontend.studiodetailpage;
@@ -62,5 +63,27 @@ public class Homepagesteps extends BaseSetup {
 	    	assertTrue(homepage.ProfileUserName.isDisplayed());
 	    	assertTrue(homepage.Headderprofileicon.isDisplayed());
 	    }
+	    @Given("^Click on sho card from any row and verify its redirected to correct sho detail page$")
+	    public void click_on_sho_card_from_any_row_and_verify_its_redirected_to_correct_sho_detail_page() throws Throwable {
+	        Actions a =new Actions(driver);
+	        a.moveToElement(homepage.MultipleRowShocards.get(0)).build().perform();
+	        wait.until(ExpectedConditions.visibilityOf(homepage.MultipleRowShoNamesonShocards.get(0)));
+	    	String shonameoncard=homepage.MultipleRowShoNamesonShocards.get(0).getText();
+	    	homepage.MultipleRowShocards.get(0).click();
+	    	wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
+	        String shoname=shodetailpage.ShoNameonShoDetailPage.getText();
+	        assertEquals(shoname,shonameoncard);
+	    }
+	    @Given("^Click on studio card from studio row and verify its redirected to correct studio detail page$")
+	    public void click_on_studio_card_from_studio_row_and_verify_its_redirected_to_correct_studio_detail_page() throws Throwable {
+	    	commonlocatorsandmethods.scrolldownm();
+	    	String studionameoncard=homepage.RowStudioNameonCard.get(0).getText();
+	    	homepage.StudioCards.get(0).click();
+	    	wait.until(ExpectedConditions.visibilityOf(studiodetailpage.StudioNameInStudioPage));
+	        String studioname=studiodetailpage.StudioNameInStudioPage.getText();
+	        assertEquals(studioname,studionameoncard);
+	    }
+
+	   
 
 }
