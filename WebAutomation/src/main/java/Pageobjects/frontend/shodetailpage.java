@@ -118,6 +118,9 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/div[2]/section[1]/div[1]/app-gud-slider[1]/div[1]/div[2]/swiper[1]/div[1]/app-gud-card[1]/div[1]/div[1]/div[1]/div[3]")
 	public static List<WebElement> PromoShareIcon;
 	
+	@FindBy(xpath="//*[@class='user-navigation']//following::h1")
+	public static WebElement titleNameAtribute;
+	
 	public static String PromoCardClick(String promoname)
 	{
 		Actions a =new Actions(driver);

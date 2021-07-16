@@ -84,19 +84,19 @@ public class paymentpage extends BaseSetup {
 	@FindBy(xpath="//div[@class='methods-block']/div/button")
 	public static List<WebElement> RazorPayPaymentModes; 
 	
-	@FindBy(xpath="//div[@id='add-card-container']/div[1]/div[1]")
+	@FindBy(id="card_number")
 	public static WebElement CardNum;
 	
-	@FindBy(xpath="//div[@id='add-card-container']/div[1]/div[2]")
+	@FindBy(id="card_expiry")
 	public static WebElement ExpiryField;
 	
-	@FindBy(xpath="//div[@id='add-card-container']/div[2]/div[1]")
+	@FindBy(id="card_name")
 	public static WebElement CardHolderName;
 	
-	@FindBy(xpath="//div[@id='add-card-container']/div[2]/div[2]")
+	@FindBy(id="card_cvv")
 	public static WebElement CVVNo;
 	
-	@FindBy(xpath="//div[@id='add-card-container']/div[3]/div/label/span")
+	@FindBy(id="should-save-card")
 	public static WebElement RememberCheckbox;
 	
 	@FindBy(id="footer")
@@ -108,7 +108,7 @@ public class paymentpage extends BaseSetup {
 	@FindBy(id="bank-item-SBIN")
 	public static WebElement SBIBankNetBanking;
 	
-	@FindBy(className="razorpay-checkout-frame")
+	@FindBy(xpath="//iframe[@class='razorpay-checkout-frame']")
 	public static WebElement RozarPayFrame;
 	
 	@FindBy(id="otp-sec")
@@ -117,14 +117,17 @@ public class paymentpage extends BaseSetup {
 	
 	public static void PaymentviaCard()
 	{
-		
-		CardNum.click();
+		WebDriverWait wait=new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(paymentpage.CardNum));
 		CardNum.sendKeys("4111111111111111");
 		ExpiryField.sendKeys("1025");
+		CardHolderName.clear();
 		CardHolderName.sendKeys("sameer");
 		CVVNo.sendKeys("123");
+		RememberCheckbox.click();
 		PayButton.click();
 	}
+	
 	
 	
 	
@@ -135,36 +138,84 @@ public class paymentpage extends BaseSetup {
 		{
 			RazorPayPaymentModes.get(0).click();
 			Thread.sleep(1000);
-			if(SkipOTP.isDisplayed())
+			try{
+				PaymentviaCard();
+			}
+			catch(Exception e)
 			{
 				SkipOTP.click();
-				Thread.sleep(2000);
-				//PaymentviaCard();
-				CardNum.click();
-				CardNum.sendKeys("4111111111111111");
-				ExpiryField.sendKeys("1025");
-				CardHolderName.sendKeys("sameer");
-				CVVNo.sendKeys("123");
-				PayButton.click();
-			}
-			else
-			{
-			PaymentviaCard();
-			Thread.sleep(3000);
+				Thread.sleep(1000);
+				PaymentviaCard();
 			}
         }
 		else if(PaymentMode.equalsIgnoreCase("UPI"))
 		{
 			RazorPayPaymentModes.get(1).click();
-			//PaymentviaUpi();
-			//Thread.sleep(3000);
+			Thread.sleep(1000);
+			UPIIdField.sendKeys("sameer239@ybl");
+			PayButton.click();
+			Thread.sleep(5000);
+			
 		}
-		else if(PaymentMode.equalsIgnoreCase("NetBannking"))
+		else if(PaymentMode.equalsIgnoreCase("NetBanking"))
 		{
 			RazorPayPaymentModes.get(2).click();
-			//PayTmPaymentCreditCard();
+			Thread.sleep(1000);
+			SBIBankNetBanking.click();
+			PayButton.click();
 		}
 	}
+	
+	
+	
+	public static void switchframe(String paymentscenario,String PaymentMode) throws InterruptedException
+	{
+		WebDriverWait wait=new WebDriverWait(driver,20);
+	    driver.switchTo().frame(RozarPayFrame);
+		SelectPaymentMode(PaymentMode);
+		driver.switchTo().defaultContent();
+		if(PaymentMode.equalsIgnoreCase("UPI"))
+		{
+			Thread.sleep(5000);
+		}
+		else {
+		
+		if(paymentscenario.equalsIgnoreCase("Success"))
+		{
+			wait.until(ExpectedConditions.visibilityOf(RazorPaySuccessButton));
+			RazorPaySuccessButton.click();
+		}
+		else if(paymentscenario.equalsIgnoreCase("Failure"))
+		{
+			wait.until(ExpectedConditions.visibilityOf(RazorPayFailureButton));
+			RazorPayFailureButton.click();
+		}
+	  }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -221,95 +272,31 @@ public class paymentpage extends BaseSetup {
 
 
 
-	/*
-	
-	
-	
-	public static void PaymentviaRazorPay()
-	{
-		RazoarPayCardno.sendKeys("4111111111111111");
-		RazoarPayCardnoExpiryDate.sendKeys("1025");
-		RazoarPayCardnoCVV.sendKeys("123");
-		RazoarPayCardnoName.sendKeys("sameer");
-		RazoarPayButton.click();
-	}
-	
-	public static void PaymentviaUpi()
-	{
-		UPIField.sendKeys("sameer@ybl");
-		UPIPayButton.click();
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void PaytmPaymentScenario(String paymentscenario)
-	{
-		WebDriverWait wait=new WebDriverWait(driver,30);
-		 wait.until(ExpectedConditions.visibilityOfAllElements(ChoosePaymentScenario));
-		 Actions a=new Actions(driver);
-		if(paymentscenario.equalsIgnoreCase("Success"))
-		{
-			a.moveToElement(ChoosePaymentScenario.get(0)).click().build().perform();
-			//ChoosePaymentScenario.get(0).click();
-		}
-		else if(paymentscenario.equalsIgnoreCase("Failure"))
-		{
-			ChoosePaymentScenario.get(1).click();
-		}
-		else
-		{
-			System.out.println("No Payment Scenario");
-		}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void RazorpaypaymentScenario(String paymentScenario) throws InterruptedException {
 
-		String MainWindow = driver.getWindowHandle();
-		Set<String> s1 = driver.getWindowHandles();
-		Iterator<String> i1 = s1.iterator();
-		while (i1.hasNext()) {
-			String ChildWindow = i1.next();
-
-			if (!MainWindow.equalsIgnoreCase(ChildWindow)) {
-				driver.switchTo().window(ChildWindow);
-				if (paymentScenario.equalsIgnoreCase("Success")) {
-					RazorPaySuccessButton.click();
-
-				} else if (paymentScenario.equalsIgnoreCase("Failure")) {
-
-					RazorPayFailureButton.click();
-
-				}
-
-			}
-
-		}
-		driver.switchTo().window(MainWindow);
-	}
 	
-	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 

@@ -91,6 +91,9 @@ public class ShareFeature extends BaseSetup {
 		@FindBy(xpath="//ul[@class='shocial-links ng-star-inserted']/li/span")
 		private static List<WebElement> AllSocialIconsShare;
 		
+		@FindBy(xpath="//ul[@class='shocial-links ng-star-inserted']/li")
+		public static List<WebElement> StudioSocialIcons;
+		
 		
 	public static String SocialShare(String ShareType)
 			throws InterruptedException, HeadlessException, UnsupportedFlavorException, IOException {
@@ -307,5 +310,31 @@ public class ShareFeature extends BaseSetup {
 
 	}
         
-
+	public static void Studioshare() throws InterruptedException, HeadlessException, UnsupportedFlavorException, IOException
+	{
+		for(int i=0;i<StudioSocialIcons.size();i++)
+		{
+			if(i==0)
+			{
+				StudioSocialIcons.get(i).click();
+				facebookwindowhandle();
+			}
+			else if(i==1)
+			{
+				StudioSocialIcons.get(i).click();
+				twitterwindowhandle();
+			}
+			else if(i==2)
+			{
+				StudioSocialIcons.get(i).click();
+				whatsappswindowhandle();
+			}
+			else if(i==3)
+			{
+				StudioSocialIcons.get(i).click();
+				copylinkwindowhandle();
+			}
+		}
+	}
+	
 }

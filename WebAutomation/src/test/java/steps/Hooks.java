@@ -29,15 +29,15 @@ public class Hooks extends BaseSetup {
 		BaseSetup.intiliazedriver();
 		
 	}	
-	@Before("not @Paywall")
+	@Before("not @paywall")
 	public void loginapplication() throws InterruptedException, IOException
 	{
 		
-		System.out.println("This Before Hook for not applicable to Paywall concept and Signup and Login");
+		System.out.println("This Before Hook for not applicable to Paywall,Signup and Login features");
 		SignUp sl=new SignUp();
 		ToastandErrormessages ts=new ToastandErrormessages();
 		SignUp.HomePageSignInButton.click();
-		SignUp.PhoneEmailIdField.sendKeys("9542840307");
+		SignUp.PhoneEmailIdField.sendKeys("8555261373");
 		SignUp.PasswordField.sendKeys("sameer6789");
 		SignUp.LoginPageSignInButton.click();
 		ToastandErrormessages.ToastMessageClose.click();
