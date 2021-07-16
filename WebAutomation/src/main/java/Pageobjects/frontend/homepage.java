@@ -80,19 +80,31 @@ public class homepage extends BaseSetup {
 	public static WebElement clicknotification;
 	
 	@FindBy(xpath="//a[@class='fill-profile']")
-	public static WebElement profileicon;
+	public static WebElement Headderprofileicon;
 	
-	@FindBy(xpath="//li[@contains(text(),'Account & Settings']")
+	@FindBy(xpath="//a[text()='Account & Settings']")
 	public static WebElement accountsettings;
 	
-	@FindBy(xpath="//li[@contains(text(),'Friends']")
+	@FindBy(xpath="//a[text()='Friends']")
 	public static WebElement friends;
 	
-	@FindBy(xpath="//li[@contains(text(),'Support']")
+	@FindBy(xpath="//a[text()='Support']")
 	public static WebElement support;
 	
-	@FindBy(xpath="//p[contains(text(),'Manage your Email, SMS, In-app and push notificati')]")
-	public static WebElement notificationtext;
+	@FindBy(xpath="//div[@class='settings-box']")
+	public static WebElement notificationsettingbox;
+	
+	@FindBy(xpath="//div[@class='settings-box']/p")
+	public static WebElement NotificationSettingText;
+	
+	@FindBy(xpath="//div[@class='user-info-list']/div")
+	public static WebElement ProfileUserPhoneNumber;
+	
+	@FindBy(xpath="//div[@class='user-info-list']/span")
+	public static WebElement ProfileUserName;
+	
+	@FindBy(xpath="//div[@class='user-detail-list']/ngx-avatar")
+	public static WebElement HoverProfileIcon;
 	
 	
 	

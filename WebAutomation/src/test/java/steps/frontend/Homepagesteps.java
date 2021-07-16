@@ -1,8 +1,12 @@
 package steps.frontend;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,32 +36,31 @@ public class Homepagesteps extends BaseSetup {
 	  
 	  @Given("^verify notification tab$")
 	    public void verify_notification_tab() throws Throwable {
-			Thread.sleep(2000);
-
 			WebElement notify=wait.until(ExpectedConditions.elementToBeClickable(homepage.clicknotification));
 	   	executor.executeScript("arguments[0].click();", notify);
 	    	Thread.sleep(2000);
 	    	}
 		@Then("^verify notification page redirected to correct page$")
 	    public void verify_notification_page_redirected_to_correct_page() throws Throwable {
-			
-			homepage.notificationtext.isDisplayed();
-			
+			homepage.notificationsettingbox.isDisplayed();
+			String actual=homepage.NotificationSettingText.getText();
+			assertEquals(actual,"Manage your Email, SMS, In-app and push notifications");
 			}
-		
 
 	    @Given("^verify user profile icon$")
 	    public void verify_user_profile_icon() throws Throwable {
-	    	Thread.sleep(3000);
-	    	WebElement picon=wait.until(ExpectedConditions.elementToBeClickable(homepage.profileicon));
-	    	homepage.profileicon.click();
-	    	executor.executeScript("arguments[0].click();", picon);
+	    	wait.until(ExpectedConditions.elementToBeClickable(homepage.Headderprofileicon));
+	    	Actions a=new Actions(driver);
+	    	a.moveToElement(homepage.Headderprofileicon).build().perform();
 	    }
 	    @Then("^verify profile icon page$")
 	    public void verify_profile_icon_page() throws Throwable {
-	    	homepage.accountsettings.isDisplayed();
-	    	homepage.friends.isDisplayed();
-	    	homepage.support.isDisplayed();
+	    	assertTrue(homepage.accountsettings.isDisplayed());
+	    	assertTrue(homepage.friends.isDisplayed());
+	    	assertTrue(homepage.support.isDisplayed());
+	    	assertTrue(homepage.ProfileUserPhoneNumber.isDisplayed());
+	    	assertTrue(homepage.ProfileUserName.isDisplayed());
+	    	assertTrue(homepage.Headderprofileicon.isDisplayed());
 	    }
 
 }
