@@ -20,7 +20,6 @@ import net.masterthought.cucumber.sorting.SortingMethod;
 	@RunWith(Cucumber.class)
 	@CucumberOptions(features= "src/test/resources/Features/frontend",
 	glue={"steps"},	
-	tags="@paywall",
 	plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 			  "pretty","json:target/cucumber-reports/Cucumber.json", 
 			  "junit:target/cucumber-reports/Cucumber.xml",

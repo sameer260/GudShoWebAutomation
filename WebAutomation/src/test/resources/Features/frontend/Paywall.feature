@@ -1,4 +1,3 @@
-@paywall
 Feature: Paywall Scenarios
 
    
