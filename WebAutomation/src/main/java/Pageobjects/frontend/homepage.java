@@ -95,10 +95,10 @@ public class homepage extends BaseSetup {
 	@FindBy(xpath="//a[text()='Support']")
 	public static WebElement support;
 	
-	@FindBy(xpath="//div[@class='settings-box']")
+	@FindBy(xpath="//div[@class='settings-box ng-star-inserted']")
 	public static WebElement notificationsettingbox;
 	
-	@FindBy(xpath="//div[@class='settings-box']/p")
+	@FindBy(xpath="//div[@class='settings-box ng-star-inserted']/p")
 	public static WebElement NotificationSettingText;
 	
 	@FindBy(xpath="//div[@class='user-info-list']/div")
