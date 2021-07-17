@@ -1,6 +1,6 @@
  Feature: Home Page scenarios
   
-    @home  
+      
     Scenario: notification scenario
     Given verify notification tab
     Then verify notification page redirected to correct page
