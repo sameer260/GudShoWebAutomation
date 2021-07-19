@@ -15,13 +15,13 @@ public class shodetailpage extends BaseSetup
 		PageFactory.initElements(driver,this);
 	}
 	
-	@FindBy(xpath="//div[@class='bookmark static sho-detail flex align-items-center justify-content-center cursor relative-signUp add-to-list ng-star-inserted']")
+	@FindBy(xpath="//li[starts-with(@class,'watch-lists banner-watch-lists ng-tns-')]")
     public static WebElement WatchListButton;
 	
-	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[3]/div[2]/ul[1]/li[2]/div[1]")
+	@FindBy(xpath="//li[starts-with(@class,'watch-lists banner-watch-lists ng-tns-')]//following-sibling::li")
 	public static WebElement ShareButton;
 	
-	@FindBy(xpath="//body[@id='body']/app-root/div/app-sho-details/main/section/div/div[3]/h1")
+	@FindBy(xpath="//h1[starts-with(@class,'title-name ng-tns-')]")
 	public static WebElement ShoNameonShoDetailPage;
 	
 	@FindBy(xpath="//div[@class='sign-popup ng-star-inserted']")
@@ -94,16 +94,16 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="/html[1]/body[1]/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[3]/div[3]/div[1]/p[1]")
 	public static WebElement FeelersText;
 	
-	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[2]/a[1]")
+	@FindBy(xpath="//div[starts-with(@class,'studio-name ng-tns-')]")
 	public static WebElement StudioLink;
 	
-	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/section[1]/div[1]/div[2]/a[1]/div[2]/h6")
+	@FindBy(xpath="//div[starts-with(@class,'studio-name ng-tns-')]/h6")
 	public static WebElement StudionameinStudioLink;
 	
 	
 	//Promo Cards
 	
-	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[2]/h4")
+	@FindBy(xpath="//div[starts-with(@class,'card-main promo-card-content sho-promocard ng-tns-')]//child::div[2]/h4")
 	public static List<WebElement> PromoNamesofPromoCards;
 	
 	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[2]/div/p")
@@ -112,10 +112,10 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[2]/div/span")
 	public static List<WebElement> GudCountofPromos;
 	
-	@FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode']/app-gud-card/div/div/div[1]")
+	@FindBy(xpath="//div[starts-with(@class,'see-all-image cursor ng-tns-')]")
 	public static List<WebElement> PromoCards;
 	
-	@FindBy(xpath="//body/app-root[1]/div[1]/app-sho-details[1]/main[1]/div[2]/section[1]/div[1]/app-gud-slider[1]/div[1]/div[2]/swiper[1]/div[1]/app-gud-card[1]/div[1]/div[1]/div[1]/div[3]")
+	@FindBy(xpath="//div[starts-with(@class,'hover-share flex align-items-center justify-content-center ng-tns-')]")
 	public static List<WebElement> PromoShareIcon;
 	
 	@FindBy(xpath="//*[@class='user-navigation']//following::h1")
