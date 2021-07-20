@@ -69,11 +69,10 @@ public class Homepagesteps extends BaseSetup {
 	   	    public void click_on_sho_card_from_any_row_and_verify_its_redirected_to_correct_sho_detail_page() throws Throwable {
 	   	        Actions a =new Actions(driver);
 	   	        a.moveToElement(homepage.MultipleRowShocards.get(0)).build().perform();
-	   	        wait.until(ExpectedConditions.visibilityOf(homepage.MultipleRowShoNamesonShocards.get(0)));
-	   	    	String shonameoncard=homepage.MultipleRowShoNamesonShocards.get(0).getText();
+	   	    	String shonameoncard=homepage.MultipleRowShoNamesonShocards.get(0).getAttribute("alt");
 	   	    	homepage.MultipleRowShocards.get(0).click();
-	   	    	wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
-	   	        String shoname=shodetailpage.ShoNameonShoDetailPage.getText();
+	   	    	wait.until(ExpectedConditions.visibilityOf(shodetailpage.WatchListButton));
+	   	        String shoname=shodetailpage.ShoNameonShoDetailPage.getAttribute("alt");
 	   	        assertEquals(shoname,shonameoncard);
 	   	    }
 	   	    @Given("^Click on studio card from studio row and verify its redirected to correct studio detail page$")
@@ -88,7 +87,7 @@ public class Homepagesteps extends BaseSetup {
 
 	    String bannerShoName;
 	    
-	    @Given("^Select fist card from home banner$")
+	    @Given("^Select first card from home banner$")
 	    public void select_fist_card_from_home_banner() throws Throwable {
 	    	Actions a = new Actions(driver);
 	    	wait.until(ExpectedConditions.visibilityOfAllElements(homepage.allBanners));
@@ -100,7 +99,7 @@ public class Homepagesteps extends BaseSetup {
 	      
 	    }
 
-	    @Then("^verify redirection of home banner$")
+	    @Then("^verify redirection of first card home banner$")
 	    public void verify_redirection_of_home_banner() throws Throwable {
 	    	String shoName = shodetailpage.ShoNameonShoDetailPage.getAttribute("alt");
 	    	assertTrue(shoName.equalsIgnoreCase(bannerShoName));

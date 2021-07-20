@@ -3,17 +3,18 @@ package Runner;
 
 
 import java.io.File;
+
 import java.io.IOException;
 
 import io.cucumber.junit.CucumberOptions;
 import java.util.ArrayList;
 import java.util.List;
+
+
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-
-import com.aventstack.extentreports.ExtentReports;
 
 import Resources.AutomatedEmail;
 import io.cucumber.junit.Cucumber;
@@ -23,7 +24,7 @@ import net.masterthought.cucumber.sorting.SortingMethod;
 
 
 	@RunWith(Cucumber.class)
-	@CucumberOptions(features= "src/test/resources/Features/frontend/shodetailpage.feature",
+	@CucumberOptions(features= "src/test/resources/Features/frontend/Homepage.feature",
 	glue={"steps"},
 	plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 			  "pretty","json:target/cucumber-reports/Cucumber.json", 

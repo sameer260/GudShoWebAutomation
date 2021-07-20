@@ -21,7 +21,7 @@ public class shodetailpage extends BaseSetup
 	@FindBy(xpath="//li[starts-with(@class,'watch-lists banner-watch-lists ng-tns-')]//following-sibling::li")
 	public static WebElement ShareButton;
 	
-	@FindBy(xpath="//h1[starts-with(@class,'title-name ng-tns-')]")
+	@FindBy(xpath="//h1[starts-with(@class,'title-name ng-tns-')]//child::img")
 	public static WebElement ShoNameonShoDetailPage;
 	
 	@FindBy(xpath="//div[@class='sign-popup ng-star-inserted']")

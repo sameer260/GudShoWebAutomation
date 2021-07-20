@@ -47,7 +47,7 @@ public class commonSteps extends BaseSetup {
 	public void search_any_and_verfiy_its_redirected_to_correct_page(String shoname) throws Throwable {
 		homepage.HomePageSearch(shoname);
 		wait.until(ExpectedConditions.visibilityOf(shodetailpage.ShoNameonShoDetailPage));
-		String shonameonshodetailpage = shodetailpage.ShoNameonShoDetailPage.getText();
+		String shonameonshodetailpage = shodetailpage.ShoNameonShoDetailPage.getAttribute("alt");
 		log.info(shonameonshodetailpage);
 		assertEquals(shonameonshodetailpage, shoname);
 	}
