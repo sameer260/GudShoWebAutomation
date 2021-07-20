@@ -1,7 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+
 	<modelVersion>4.0.0</modelVersion>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<groupId>GudSho</groupId>
 	<artifactId>WebAutomation</artifactId>
@@ -10,6 +21,8 @@
 
 	<name>WebAutomation</name>
 	<url>http://maven.apache.org</url>
+
+
 
 
 
@@ -113,6 +126,11 @@
 
 
 
+		<dependency>
+			<groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
+			<artifactId>pdfbox2-layout</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 
 
 
