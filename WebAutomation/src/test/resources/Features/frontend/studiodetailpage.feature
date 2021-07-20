@@ -17,7 +17,7 @@ Feature: Studio Detail page Scenarios
       |StudioName|shotrailer|
       |Sameer    |   Locked |
      
-     @ramya
+     
   Scenario Outline: Search any Studio and follow  the Studio
     Given Search any studio <StudioName> and verify it should redirected to correct page
     When Click on Follow button
@@ -27,7 +27,7 @@ Feature: Studio Detail page Scenarios
       | StudioName   |
       | Trail Studio |   
       
-      @ramya
+      
    Scenario Outline: Search any Studio and play promo  and close promo player and check its redirection
     Given Search any studio <StudioName> and verify it should redirected to correct page
     When verfiy promo player
@@ -37,7 +37,7 @@ Feature: Studio Detail page Scenarios
       | StudioName   |
       | Trail Studio |
 
-  @ramya1
+  
   Scenario Outline: Search any Studio and click sho card
     Given Search any studio <StudioName> and verify it should redirected to correct page
     When click sho card and verify its redirected sho detail page
@@ -49,10 +49,10 @@ Feature: Studio Detail page Scenarios
  @ramya
   Scenario Outline: Search any Studio and select any genre and verify sho card
     Given Search any studio <StudioName> and verify it should redirected to correct page
-    When click genre and verify sho card redirection
+    When click <genere> and verify sho card redirection
 
     Examples: 
-      | StudioName   |
-      | Trail Studio|     
+      | StudioName   |genere|
+      | Trail Studio |Drama |    
       
       

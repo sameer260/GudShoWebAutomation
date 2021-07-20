@@ -17,7 +17,7 @@ Feature: sho detail page scenarios
     Examples: 
       | ShoName | PromoName                     |
       | Talent  | Vakeel Sab Theatrical Trailer |
-      
+    
   Scenario Outline: Search any sho and add in to watch list
     Given Search any <ShoName> and verfiy its redirected to correct page
     When Add <ShoName> in to watchlist and check the toaster message
