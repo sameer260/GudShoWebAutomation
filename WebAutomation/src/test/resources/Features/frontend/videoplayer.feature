@@ -1,5 +1,5 @@
 Feature: Video Player Scenarios
-@video
+
 Scenario Outline: Check all the player like Play,Pause,Forwad and Backward Actions for promo Player
 Given Search any <ShoName> and verfiy its redirected to correct page
 When Play promo

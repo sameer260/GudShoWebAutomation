@@ -31,10 +31,6 @@ public class homepage extends BaseSetup {
 	public
 	static List<WebElement> HomePageBannerSliderButtons;
 	
-	@FindBy(xpath="//ul[@id='banner-lists']//child::li//div[2]")
-	public
-	static List<WebElement> allBanners;
-	
 	@FindBy(xpath="//h3[@class='ng-star-inserted']")
 	public
 	static List<WebElement> ShoNamesOnBannerText;
@@ -124,6 +120,16 @@ public class homepage extends BaseSetup {
     
     @FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow']/app-gud-card/div/div/div/a/app-gud-image/div/div/img")
     public static List<WebElement> MultipleRowShoNamesonShocards;
+    
+    @FindBy(xpath="//*[starts-with(@class, 'home-banner-content flex')]")
+    public
+    static List<WebElement> allBanners;
+    
+    @FindBy(id="banner-promo-player")
+    public static WebElement ShonameonBanner;
+    
+    @FindBy(xpath="//*[starts-with(@class,'auto-image cursor slider-card-promo promo-top hover-img play-hover-icon')]")
+    public static WebElement promoCard;
 	
 	
 	

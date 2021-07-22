@@ -35,7 +35,6 @@ Feature: sho detail page scenarios
     Examples: 
       | ShoName | ShareType  |
       | Talent  | shoshare   |
-
   
   Scenario Outline: Search any Sho and Share promo
     Given Search any <ShoName> and verfiy its redirected to correct page

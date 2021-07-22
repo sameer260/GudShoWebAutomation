@@ -87,23 +87,28 @@ public class Homepagesteps extends BaseSetup {
 
 	    String bannerShoName;
 	    
-	    @Given("^Select first card from home banner$")
-	    public void select_fist_card_from_home_banner() throws Throwable {
-	    	Actions a = new Actions(driver);
-	    	wait.until(ExpectedConditions.visibilityOfAllElements(homepage.allBanners));
-	    	String bannerShoName = homepage.allBanners.get(1).getText();
-	    	log.info("Redirecting to this sho: "+bannerShoName);
-	    	a.moveToElement(homepage.allBanners.get(1)).build().perform();
-	    	Thread.sleep(3000);
-	    	homepage.allBanners.get(1).click();
-	      
+	    @Given("^Select first card from home banner and check sho detail page redirection$")
+	    public void Select_first_card_from_home_banner_and_check_sho_detail_page_redirection() throws Throwable {
+	    	    Actions a = new Actions(driver);
+	    	    wait.until(ExpectedConditions.visibilityOfAllElements(homepage.allBanners));
+	    	    String ShonameonBanner=homepage.ShonameonBanner.getAttribute("title");
+	    	    System.out.println("Shoname on Banner:" + ShonameonBanner);
+	    	    a.moveToElement(homepage.allBanners.get(0)).click().build().perform();
+	    	    String shoName = shodetailpage.ShoNameonShoDetailPage.getAttribute("alt");
+	    	    System.out.println("Shoname on sjodetail:" + shoName);
+		    	assertTrue(shoName.equalsIgnoreCase(ShonameonBanner));
 	    }
-
-	    @Then("^verify redirection of first card home banner$")
-	    public void verify_redirection_of_home_banner() throws Throwable {
-	    	String shoName = shodetailpage.ShoNameonShoDetailPage.getAttribute("alt");
-	    	assertTrue(shoName.equalsIgnoreCase(bannerShoName));
-	        
+	    @Given("^Select first promo card from promo row$")
+	    public void select_first_promo_card_from_promo_row() throws Throwable {
+	     commonlocatorsandmethods.scrolldownm();
+	     Actions a = new Actions(driver);
+	     a.moveToElement(homepage.promoCard).click().build().perform();
+	    }
+	    @Then("^verify redirection of promo player$")
+	    public void verify_redirection_of_promo_player() throws Throwable {
+	     Thread.sleep(3000);
+	     videoplayer.PromoNameonPlayer.isDisplayed();
+	      
 	    }
 
 
