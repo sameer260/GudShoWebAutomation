@@ -122,7 +122,7 @@ public class homepage extends BaseSetup {
     @FindBy(xpath="//div[@class='home-slider studios-swiper ng-star-inserted']/app-gud-slider/div/div[2]/swiper/div/app-gud-card/div/div/div/div[2]/div/a/h6")
     public static List<WebElement> RowStudioNameonCard;
     
-    @FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow']/app-gud-card/div/div/div[2]/div/div/h5")
+    @FindBy(xpath="//div[@class='swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-multirow']/app-gud-card/div/div/div/a/app-gud-image/div/div/img")
     public static List<WebElement> MultipleRowShoNamesonShocards;
 	
 	

@@ -65,13 +65,13 @@ public class AutomatedEmail
 				message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("gracediana.s@contus.in"));
 	            
 	                        // Add the subject link
-				message.setSubject("Automation Test Report");
+				message.setSubject("GudSho Web: Automation Test Report");
 	 
 				// Create object to add multimedia type content
 				BodyPart messageBodyPart1 = new MimeBodyPart();
 	 
 				// Set the body of email
-				messageBodyPart1.setText("Please Find the attachment for detailed Automation Report");
+				messageBodyPart1.setText("Please find the attached GudSho Web Automation Report for your kind reference");
 	 
 				// Create another object to add another content
 				MimeBodyPart messageBodyPart2 = new MimeBodyPart();
@@ -86,7 +86,7 @@ public class AutomatedEmail
 				messageBodyPart2.setDataHandler(new DataHandler(source));
 	 
 				// set the file
-				messageBodyPart2.setFileName("Automation Report");
+				messageBodyPart2.setFileName("GudSho_Web_Automation");
 	 
 				// Create object of MimeMultipart class
 				Multipart multipart = new MimeMultipart();
